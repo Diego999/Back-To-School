@@ -77,4 +77,10 @@ BackToSchool::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  # Back-To-School modificiations
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtpgw1.he-arc.ch',
+  }
 end
