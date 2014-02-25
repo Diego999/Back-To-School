@@ -1,0 +1,9 @@
+<%= form_for([@discussion, @message]) do |f| %>
+    <p>
+      Text: <%= f.text_field :text %>
+    </p>
+    <p>
+      <%= f.submit 'send message' %>
+    </p>
+
+<% end %>

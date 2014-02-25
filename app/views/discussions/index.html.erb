@@ -1,0 +1,15 @@
+<h1>Discussions#index</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @discussions.each do |discussion| %>
+      <tr>
+        <td><%= link_to discussion.title, discussion %></td>
+        <td><%= link_to 'e', edit_discussion_path(discussion) %></td>
+      </tr>
+  <% end %>
+
+</table>

@@ -1,0 +1,16 @@
+<p>Discussions#show</p>
+<h2><%= @discussion.title %></h2>
+
+<h3>Participants</h3>
+<%= render @discussion.participants %>
+<hr />
+
+<h3>Discussion</h3>
+<%= render @discussion.messages %>
+<hr />
+
+<h3>Append a new message to discussion</h3>
+<%= render 'messages/form' %>
+<hr />
+
+<%= link_to 'Back', discussions_path %>

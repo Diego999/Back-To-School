@@ -1,5 +1,11 @@
 BackToSchool::Application.routes.draw do
+
   get "home/index"
+
+  resources :discussions do
+    resources :messages
+  end
+
   devise_for :users
 
   root :to => "home#index"
