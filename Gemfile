@@ -43,4 +43,5 @@ end
 
 # Use debugger
 
+gem 'devise'
 gem 'authority'
