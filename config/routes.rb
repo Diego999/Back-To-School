@@ -6,6 +6,8 @@ BackToSchool::Application.routes.draw do
     resources :messages
   end
 
+  get "users/index"
+
   devise_for :users
 
   root :to => "home#index"
