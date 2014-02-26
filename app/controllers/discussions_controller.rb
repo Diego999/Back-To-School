@@ -1,4 +1,5 @@
 class DiscussionsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     @discussions = Discussion.all

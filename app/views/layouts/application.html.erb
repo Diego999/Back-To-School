@@ -2,11 +2,27 @@
 <html>
 <head>
   <title>BackToSchool</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<header>
+  <ul>
+    <li><%= link_to 'Discussions', discussions_path %></li>
+    <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><%= current_user.email %>
+        </li>
+    <% else %>
+        <li>
+          <%= link_to('Login', new_user_session_path)  %>
+        </li>
+    <% end %>
+  </ul>
+
+</header>
 
 <%= yield %>
 
