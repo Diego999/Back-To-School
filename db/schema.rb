@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226124557) do
+ActiveRecord::Schema.define(version: 20140228121818) do
 
   create_table "discussions", force: true do |t|
     t.datetime "created_at"
@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(version: 20140226124557) do
 
   add_index "promotions", ["establishment_id"], name: "index_promotions_on_establishment_id", using: :btree
 
+  create_table "promotions_users", force: true do |t|
+    t.integer "promotion_id"
+    t.integer "user_id"
+  end
+
+  add_index "promotions_users", ["promotion_id"], name: "index_promotions_users_on_promotion_id", using: :btree
+  add_index "promotions_users", ["user_id", "promotion_id"], name: "index_promotions_users_on_user_id_and_promotion_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -100,11 +108,9 @@ ActiveRecord::Schema.define(version: 20140226124557) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "promotion_id"
     t.integer  "establishment_id"
   end
 
   add_index "users", ["establishment_id"], name: "index_users_on_establishment_id", using: :btree
-  add_index "users", ["promotion_id"], name: "index_users_on_promotion_id", using: :btree
 
 end

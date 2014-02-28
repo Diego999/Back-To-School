@@ -1,5 +1,5 @@
 class AddPromotionIdToUsers < ActiveRecord::Migration
   def change
-    add_reference :users, :promotion, index: true
+    remove_column :users, :promotion_id
   end
 end
