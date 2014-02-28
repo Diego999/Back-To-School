@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Authority::UserAbilities
   devise :database_authenticatable
 
   has_many :messages, class_name: "Message",
