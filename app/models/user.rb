@@ -12,5 +12,4 @@ class User < ActiveRecord::Base
   has_many :follows_promotions, :class_name => 'Promotion', through: :followers
   has_and_belongs_to_many :discussions
 
-  validates :firstname, :lastname, :mail, :password, :salt, presence: true
 end
