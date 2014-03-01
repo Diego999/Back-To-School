@@ -33,4 +33,8 @@ BackToSchool::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  #Back-To-School Modifications
+  #TODO verify if has to be changed for test environment
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

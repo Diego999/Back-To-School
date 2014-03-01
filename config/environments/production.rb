@@ -77,4 +77,9 @@ BackToSchool::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+  #Back-To-School Modifications
+  #TODO verify if has to be changed for production environment
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
