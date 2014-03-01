@@ -11,7 +11,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: backtoschool
+  database: backtoschool_development
   username: root
   password: ""
   host: 127.0.0.1
@@ -23,7 +23,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: backtoschool
+  database: backtoschool_test
   username: root
   password: ""
   host: 127.0.0.1
@@ -32,7 +32,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: backtoschool
+  database: backtoschool_production
   username: root
   password: ""
   host: 127.0.0.1
