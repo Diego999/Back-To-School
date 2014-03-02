@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BackToSchool</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <title><%= full_title(yield(:title)) %></title>
+
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+  <%= render 'layouts/iehacks' %>
 </head>
 <body>
 
-<!-- These paragraphe are very important (especially for the devise gem to inform the user) -->
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div id="site-container" class="contentcenter clearfix">
 
-<%= yield %>
+  <%= render 'layouts/header' %>
 
+  <main id="site-page" class="clearfix">
+    <div id="sidebar" class="col col3 first">
+
+      <%= yield :sidebar %>
+
+    </div>
+
+    <div id="content" class="col col9 last">
+
+      <%= render 'layouts/notifications' %>
+
+      <%= yield %>
+
+    </div>
+  </main>
+
+  <%= render 'layouts/footer' %>
+
+</div>
 </body>
 </html>

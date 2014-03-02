@@ -1,2 +1,58 @@
+<% provide(:title, 'Home') %>
+
+<% content_for :sidebar do %>
+    <div id="promotions-list-container" class="row">
+      <header><h2>Promotions</h2></header>
+      <input type="checkbox" id="toggle-promotions" class="toogle"><label for="toggle-promotions"></label>
+
+      <div class="content">
+        <div class="list-element main-promotion"><a href="#">he-arc | inf-dlm-2014</a></div>
+        <div class="list-element"><a href="#">he-arc | inf-iie-2014</a></div>
+        <div class="list-element following-promotion">
+          <a href="#">he-arc | inf-iie-2011</a>
+          <a href="#">
+            <div class="list-button leave-button"></div>
+          </a>
+        </div>
+        <div class="list-element following-promotion">
+          <a href="#">he-arc | inf-dlm-2011</a>
+          <a href="#">
+            <div class="list-button leave-button"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="students-list-container" class="row">
+      <header><h2>Students</h2></header>
+      <input type="checkbox" id="toggle-students" class="toogle"><label for="toggle-students"></label>
+
+      <div class="content">
+        <div class="list-element">
+          <a href="#">David Kühner</a>
+          <a href="#">
+            <div class="list-button message-button"></div>
+          </a>
+        </div>
+        <!-- .list-element -->
+        <div class="list-element">
+          <a href="#">Marco Aeberli</a>
+          <a href="#">
+            <div class="list-button message-button"></div>
+          </a>
+        </div>
+        <!-- .list-element -->
+        <div class="list-element">
+          <a href="#">Diego Antognini</a>
+          <a href="#">
+            <div class="list-button message-button"></div>
+          </a>
+        </div>
+        <!-- .list-element -->
+      </div>
+    </div><!-- #promotions-list-container -->
+<% end %>
+
+
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
