@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Last modification</th>
+    <th>Last message</th>
+    <th>From</th>
+  </tr>
+  <% @discussions.each do |discussion| %>
+      <% last_message = discussion.messages[0] %>
+      <tr>
+        <td><%=discussion.id %></td>
+        <td><%=discussion.updated_at %></td>
+        <td><%=last_message.message %></td>
+        <td><%=last_message.user.firstname %></td>
+      </tr>
+  <% end %>
+</table>
