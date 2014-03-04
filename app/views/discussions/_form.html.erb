@@ -1,0 +1,7 @@
+<%= form_for([@discussion],:html =>{:class => "message-form clearfix" }) do |f| %>
+
+    <%= f.text_area( :id, rows: 1, cols: 40, class: "message", placeholder: "Add users here and..." ) %>
+
+    <%= f.submit 'Create it !', :id => "message-submit" %>
+
+<% end %>
