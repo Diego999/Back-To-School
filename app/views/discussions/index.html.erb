@@ -1,17 +1,17 @@
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Last modification</th>
-    <th>Last message</th>
-    <th>From</th>
-  </tr>
-  <% @discussions.each do |discussion| %>
-      <% last_message = discussion.messages[0] %>
-      <tr>
-        <td><%=discussion.id %></td>
-        <td><%=discussion.updated_at %></td>
-        <td><%=last_message.message %></td>
-        <td><%=last_message.user.firstname %></td>
-      </tr>
-  <% end %>
-</table>
+<div id="content" class="col col9 last">
+  <div id="discussion-list" class="row clearfix">
+    <header><h2>Last discussions</h2></header>
+    <!--<%= render 'discussions/form' %>-->
+    <% @discussions.each do |discussion| %>
+        <%= link_to discussion, :class=>"message-link" do %>
+            <article class="message-item item">
+              <p class="author-date">Last message : <%= discussion.updated_at.to_time.strftime('%e %B %Y at %H:%M')%></p>
+              <p class="message"><strong> todo, get, user, list, ... and more</strong> </p>
+            </article>
+        <% end %>
+    <% end %>
+  </div><!-- #discussion-list -->
+  <!--<div class="row clearfix">
+    <div id="more-button" ><a href="#">Show more</a></div>
+  </div>--><!-- .row -->
+</div><!-- #content -->
