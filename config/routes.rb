@@ -2,7 +2,12 @@ BackToSchool::Application.routes.draw do
 
   root :to => "home#index"
 
-  resources :discussions
+  resources :discussions do
+    resources :messages, only: :create
+  end
+
+  resources :users
+
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
