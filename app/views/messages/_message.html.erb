@@ -1,0 +1,4 @@
+<article class="message-item item">
+  <p class="author-date"><strong><%= link_to message.user.firstname + " " + message.user.lastname, message.user %> </strong>| <%= message.created_at.to_time.strftime('%e %B %Y at %H:%M')%></p>
+  <p class="message"> <%= message.message %> </p>
+</article>
