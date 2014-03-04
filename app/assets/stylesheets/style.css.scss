@@ -227,6 +227,10 @@ div#user-action a{
 #discussion-list article.event-item .message span { color: #676767; }
 #discussion-list article.event-item .message strong { font-weight: 400;}
 
+.message-link { color: #000; }
+.message-link:hover { color: #676767; }
+#discussion-list .message-link:hover article { background-color: #dfdfdf; }
+
 
 /* 06 SIDEBAR
 -------------------------------------------------------------- */
