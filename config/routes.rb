@@ -1,5 +1,6 @@
 BackToSchool::Application.routes.draw do
 
+  get "users/show"
   root :to => "home#index"
 
   resources :promotions

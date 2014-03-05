@@ -1,6 +1,6 @@
 <h1><%=@promotion.name%></h1>
 <ul>
   <% @students.each do |student| %>
-      <li><%=student.firstname%> <%=student.lastname%></li>
+      <li><%= link_to student.firstname + " " + student.lastname, student%></li>
   <% end %>
 </ul>

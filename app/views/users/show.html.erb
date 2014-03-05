@@ -1,0 +1,15 @@
+<h1><%= @data[:user].firstname %> <%= @data[:user].lastname %> (<%= @data[:establishment].name%>)</h1>
+
+<h2>Promotions</h2>
+<ul>
+  <% @data[:promotions].each do |promotion| %>
+      <li><%= link_to promotion.name, promotion %></li>
+  <% end %>
+</ul>
+
+<h2>Followed Promotions</h2>
+<ul>
+  <% @data[:followed_promotions].each do |promotion| %>
+      <li><%= link_to promotion.name, promotion %></li>
+  <% end %>
+</ul>
