@@ -22,3 +22,7 @@ config/initializers/secret_token.rb
 *.lock
 
 config/database.yml
+
+config/database.yml
+
+config/initializers/devise.rb
