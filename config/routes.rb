@@ -2,6 +2,12 @@ BackToSchool::Application.routes.draw do
 
   root :to => "home#index"
 
+  resources :promotions
+
+  resources :establishments do
+    resources :promotions
+  end
+
   resources :discussions do
     resources :messages, only: :create
   end

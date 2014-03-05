@@ -1,0 +1,6 @@
+<h1><%=@promotion.name%></h1>
+<ul>
+  <% @students.each do |student| %>
+      <li><%=student.firstname%> <%=student.lastname%></li>
+  <% end %>
+</ul>
