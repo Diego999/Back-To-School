@@ -10,6 +10,10 @@
     </ul>
   </nav>
   <!-- #top-navigation -->
-  <div id="user-action" class="col col2 last"><a href="#">Profile</a></div>
+  <div id="user-action" class="col col2 last">
+    <% if user_signed_in? %>
+        <%= link_to('Profile', destroy_user_session_path, :method => :delete) %>
+    <% end %>
+  </div>
   <!-- #user-action -->
 </header>
