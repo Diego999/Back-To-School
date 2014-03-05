@@ -16,23 +16,23 @@ establishments[1].discussions << discussions[1]
 establishments[2].discussions << discussions[2]
 
 user_list = [
-    ['admin', 'admin', 'admin@b2s.com', 'admin1234', true, false, false, false, []],
-    ['HE-Arc1', 'HE-Arc1', 'he-arc1@b2s.com', 'HE-Arc11234', false, true, false, false, []],
-    ['HE-Arc2', 'HE-Arc2', 'he-arc2@b2s.com', 'HE-Arc21234', false, true, false, false, []],
-    ['EPFL', 'EPFL', 'epfl@b2s.com', 'EPFL1234', false, true, false, false, []],
-    ['ETHZ', 'ETHZ', 'ethz@b2s.com', 'ETHZ1234', false, true, false, false, []],
-    ['Diego', 'Antognini', 'diego.antognini@he-arc.ch', 'Diego1234', false, false, false, true, [discussions[5], discussions[6], discussions[8], discussions[9]]],
-    ['David', 'Kuhner', 'david.kuhner@he-arc.ch', 'David1234', false, false, false, true, [discussions[5], discussions[7], discussions[8], discussions[9]]],
-    ['Marco', 'Aeberli', 'marco.aeberli@he-arc.ch', 'Marco1234', false, false, false, true, [discussions[6], discussions[7], discussions[8], discussions[9]]],
-    ['Axel', 'Bulher', 'axel.buhler@epfl.ch', 'Axel1234', false, false, false, true, []],
-    ['Olivier', 'Simon', 'olivier.simon@epfl.ch', 'Olivier1234', false, false, false, true, []],
-    ['Samuel', 'von Ehrenberg', 'samuel.vonehrenberg@ethz.ch', 'Samuel1234', false, false, false, true, []],
-    ['Adrian', 'Moll', 'adrian.moll@he-arc.ch', 'Adrian1234', false, false, false, true, []],
-    ['Michael', 'Muller', 'michael.muller@he-arc.ch', 'Michael1234', false, false, false, true, [discussions[9]]],
-    ['Cyril', 'Machin', 'cyril.machi@he-arc.ch', 'Cyril1234', false, false, false, true, [discussions[9]]]
+    ['admin', 'admin', 'admin@b2s.com', 'admin1234', true, false, false, false, nil, []],
+    ['HE-Arc1', 'HE-Arc1', 'he-arc1@b2s.com', 'HE-Arc11234', false, true, false, false, establishments[0], []],
+    ['HE-Arc2', 'HE-Arc2', 'he-arc2@b2s.com', 'HE-Arc21234', false, true, false, false, establishments[0], []],
+    ['EPFL', 'EPFL', 'epfl@b2s.com', 'EPFL1234', false, true, false, false, establishments[1], []],
+    ['ETHZ', 'ETHZ', 'ethz@b2s.com', 'ETHZ1234', false, true, false, false, establishments[2], []],
+    ['Diego', 'Antognini', 'diego.antognini@he-arc.ch', 'Diego1234', false, false, false, true, nil, [discussions[5], discussions[6], discussions[8], discussions[9]]],
+    ['David', 'Kuhner', 'david.kuhner@he-arc.ch', 'David1234', false, false, false, true, nil, [discussions[5], discussions[7], discussions[8], discussions[9]]],
+    ['Marco', 'Aeberli', 'marco.aeberli@he-arc.ch', 'Marco1234', false, false, false, true, nil, [discussions[6], discussions[7], discussions[8], discussions[9]]],
+    ['Axel', 'Bulher', 'axel.buhler@epfl.ch', 'Axel1234', false, false, false, true, nil, []],
+    ['Olivier', 'Simon', 'olivier.simon@epfl.ch', 'Olivier1234', false, false, false, true, nil, []],
+    ['Samuel', 'von Ehrenberg', 'samuel.vonehrenberg@ethz.ch', 'Samuel1234', false, false, false, true, nil, []],
+    ['Adrian', 'Moll', 'adrian.moll@he-arc.ch', 'Adrian1234', false, false, false, true, nil, []],
+    ['Michael', 'Muller', 'michael.muller@he-arc.ch', 'Michael1234', false, false, false, true, nil, [discussions[9]]],
+    ['Cyril', 'Machin', 'cyril.machi@he-arc.ch', 'Cyril1234', false, false, false, true, nil, [discussions[9]]]
 ]
 user_list.each do |user|
-  User.create(:firstname => user[0], :lastname => user[1], :email => user[2], :password => user[3], :admin => user[4], :est_admin => user[5], :professor => user[6], :student => user[7], :discussions => user[8])
+  User.create(:firstname => user[0], :lastname => user[1], :email => user[2], :password => user[3], :admin => user[4], :est_admin => user[5], :professor => user[6], :student => user[7], :establishment => user[8], :discussions => user[9])
 end
 users = User.all
 
