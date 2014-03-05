@@ -6,20 +6,17 @@
       <input type="checkbox" id="toggle-promotions" class="toogle"><label for="toggle-promotions"></label>
 
       <div class="content">
-        <div class="list-element main-promotion"><a href="#">he-arc | inf-dlm-2014</a></div>
-        <div class="list-element"><a href="#">he-arc | inf-iie-2014</a></div>
+        <% @data[:promotions].each do |promotion| %>
+           <div class="list-element main-promotion"><a href="#"><%= promotion.establishment.name%> | <%=promotion.name%></a></div>
+        <% end %>
+        <% @data[:followed_promotions].each do |promotion| %>
         <div class="list-element following-promotion">
-          <a href="#">he-arc | inf-iie-2011</a>
+          <a href="#"><%= promotion.establishment.name%> | <%=promotion.name%></a>
           <a href="#">
             <div class="list-button leave-button"></div>
           </a>
         </div>
-        <div class="list-element following-promotion">
-          <a href="#">he-arc | inf-dlm-2011</a>
-          <a href="#">
-            <div class="list-button leave-button"></div>
-          </a>
-        </div>
+        <% end %>
       </div>
     </div>
 
@@ -28,29 +25,31 @@
       <input type="checkbox" id="toggle-students" class="toogle"><label for="toggle-students"></label>
 
       <div class="content">
+        <% @data[:promotion_students].each do |student|%>
         <div class="list-element">
-          <a href="#">David Kühner</a>
+          <a href="#"><%=student.firstname%> <%=student.lastname%></a>
           <a href="#">
             <div class="list-button message-button"></div>
           </a>
         </div>
-        <!-- .list-element -->
-        <div class="list-element">
-          <a href="#">Marco Aeberli</a>
-          <a href="#">
-            <div class="list-button message-button"></div>
-          </a>
-        </div>
-        <!-- .list-element -->
-        <div class="list-element">
-          <a href="#">Diego Antognini</a>
-          <a href="#">
-            <div class="list-button message-button"></div>
-          </a>
-        </div>
-        <!-- .list-element -->
+        <% end %>
       </div>
     </div><!-- #promotions-list-container -->
+
+
+    <div id="followers-list-container" class="row">
+      <header><h2>Followers</h2></header>
+      <input type="checkbox" id="toggle-followers" class="toogle"><label for="toggle-followers"></label>
+      <div class="content">
+        <% @data[:promotion_followers].each do |follower|%>
+            <div class="list-element" >
+              <a href="#"><%=follower.user.firstname%> <%=follower.user.lastname%></a>
+              <a href="#"><div class="<%= follower.accepted ? "list-button message-button" : "list-button accept-button"%>"></div></a>
+            </div><!-- .list-element -->
+        <% end %>
+      </div>
+    </div>
+
 <% end %>
 
 
