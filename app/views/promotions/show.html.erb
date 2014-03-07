@@ -1,6 +1,12 @@
-<h1><%=@promotion.name%></h1>
-<ul>
-  <% @students.each do |student| %>
-      <li><%= link_to student.firstname + " " + student.lastname, student%></li>
-  <% end %>
-</ul>
+<div id="content" class="col col9 last">
+  <div id="discussion-list" class="row clearfix">
+    <header><h2><%=@promotion.name%></h2></header>
+    <% @students.each do |student| %>
+        <article class="message-item item">
+          <p class="message">
+            <%= link_to student.firstname + " " + student.lastname, student%>
+          </p>
+        </article>
+    <% end %>
+  </div>
+</div>

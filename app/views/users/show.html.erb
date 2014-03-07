@@ -1,15 +1,34 @@
-<h1><%= @data[:user].firstname %> <%= @data[:user].lastname %> (<%= @data[:establishment].name%>)</h1>
+<div id="content" class="col col9 last">
+  <div id="discussion-list" class="row clearfix">
+    <header><h2><%= @data[:user].firstname %> <%= @data[:user].lastname %> | <%= link_to @data[:establishment].name, @data[:establishment] %></h2></header>
 
-<h2>Promotions</h2>
-<ul>
+    <article class="event-item item">
+      <p class="message">
+        <strong>Promotions</strong>
+      </p>
+    </article>
+
   <% @data[:promotions].each do |promotion| %>
-      <li><%= link_to promotion.name, promotion %></li>
+      <article class="message-item item">
+        <p class="message">
+          <%= link_to promotion.name, promotion %>
+        </p>
+      </article>
   <% end %>
-</ul>
 
-<h2>Followed Promotions</h2>
-<ul>
+
+    <article class="event-item item">
+      <p class="message">
+        <strong>Followed Promotions</strong>
+      </p>
+    </article>
+
   <% @data[:followed_promotions].each do |promotion| %>
-      <li><%= link_to promotion.name, promotion %></li>
+      <article class="message-item item">
+        <p class="message">
+          <%= link_to promotion.name, promotion %>
+        </p>
+      </article>
   <% end %>
-</ul>
+  </div>
+</div>

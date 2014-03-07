@@ -1,6 +1,12 @@
-<h1><%=@establishment.name%></h1>
-<ul>
+<div id="content" class="col col9 last">
+    <div id="discussion-list" class="row clearfix">
+      <header><h2><%=@establishment.name%></h2></header>
   <% @establishment.promotions.each do |promotion| %>
-    <li><%= link_to promotion.name, promotion %></li>
+    <article class="event-item item">
+      <p class="message">
+        <%= link_to promotion.name, promotion %>
+      </p>
+    </article>
   <% end %>
-</ul>
+    </div>
+</div>
