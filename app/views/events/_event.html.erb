@@ -1,0 +1,6 @@
+<article class="event-item item">
+  <p class="author-date"><strong><%= link_to event.user.firstname + " " + event.user.lastname, event.user %></strong>| <%= event.created_at.to_time.strftime('%e %B %Y at %H:%M')%></p>
+  <p class="message">
+    <strong><%= event.date.to_time.strftime('%e %B %Y %H:%M') %></strong><span> : </span> <%= event.name %><span> at </span> <%=event.location%>
+  </p>
+</article>

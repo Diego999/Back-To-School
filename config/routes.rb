@@ -11,6 +11,7 @@ BackToSchool::Application.routes.draw do
 
   resources :discussions do
     resources :messages, only: :create
+    resources :events, only: :create
   end
 
   devise_for :users
