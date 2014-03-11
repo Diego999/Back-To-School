@@ -1,6 +1,19 @@
-<div id="notifications">
+<div>
   <!-- These paragraphe are very important (especially for the devise gem to inform the user) -->
-  <p class="notice"><%= notice %></p>
-
-  <p class="alert"><%= alert %></p>
+  <% if notice %>
+      <section class="notice flashbox" >
+        <a href="#" class="right close">
+          <%= image_tag("close-flashbox.png", :alt => "Close") %>
+        </a>
+        <p ><%= notice %></p>
+      </section>
+  <% end %>
+  <% if alert %>
+      <section class="alert flashbox" >
+        <a href="#" class="right close">
+          <%= image_tag("close-flashbox.png", :alt => "Close") %>
+        </a>
+        <p ><%= alert %></p>
+      </section>
+  <% end %>
 </div>
