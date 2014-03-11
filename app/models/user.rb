@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :follows_promotions, :class_name => 'Promotion', through: :followers
   has_and_belongs_to_many :discussions
 
+  def get_complete_name
+    firstname + " " + lastname
+  end
+
 end

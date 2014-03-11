@@ -10,7 +10,11 @@
         <%= link_to discussion, :class=>"message-link" do %>
             <article class="message-item item">
               <p class="author-date">Last message : <%= discussion.updated_at.to_time.strftime('%e %B %Y at %H:%M')%></p>
-              <p class="message"><strong> todo, get, user, list, ... and more</strong> </p>
+              <p class="message">
+                <strong>
+                    <%= truncate(discussion.get_destination_names.join(", "), length: 100, omission: ' ...and more', separator: ' ') %>
+                </strong>
+              </p>
             </article>
         <% end %>
     <% end %>
