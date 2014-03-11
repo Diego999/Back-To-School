@@ -4,7 +4,7 @@
 
 <div id="discussion-list" class="row clearfix">
   <header><h2>
-    <%= truncate(@discussion.get_destination_names.join(", "), length: 70, omission: ' ...and more', separator: ' ') %>
+    <%= truncate(@discussion.get_destination_names.join(", "), length: 70, omission: ' ...', separator: ' ') %>
   </h2></header>
 
   <%= render 'messages/form' %>
