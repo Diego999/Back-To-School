@@ -22,6 +22,7 @@ body { background: #393d40; }
 .row { margin: 0 0 20px; }
 
 .col { float: left; margin-right: 20px; }
+.col:empty { height: 1px; } /*hack: avoid empty col to disapear*/
 .col { background: #ccc; /*height: 40px;*/ line-height: 40px; text-align: left; }
 .last,
 .col:last-child { margin-right: 0 !important; }
