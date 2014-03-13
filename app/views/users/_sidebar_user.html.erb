@@ -1,0 +1,11 @@
+<div class="list-element" >
+  <a href="#"><%= link_to user.firstname + " " + user.lastname, user%></a>
+  <a href="#">
+    <% if defined?(is_follower) %>
+        <div class="<%= accepted ? "list-button message-button" : "list-button accept-button"%>"></div>
+    <% else %>
+        <div class="list-button message-button"></div>
+    <% end %>
+  </a>
+</div>
+
