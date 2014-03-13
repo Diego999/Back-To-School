@@ -3,6 +3,7 @@
 
 <div id="content" class="col col9 last">
   <div id="discussion-list" class="row clearfix">
+    <header><h2>Future/old Events</h2></header>
     <% @events.each do |event| %>
         <%= link_to event.discussion, :class => "message-link" do %>
             <%= render event, :hide_author_link => true %>
