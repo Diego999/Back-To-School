@@ -17,7 +17,7 @@ class EventsController < ApplicationController
       end
     end
 
-    @events.sort!{|a,b| a.date <=> b.date}
+    @events.sort!{|a,b| b.date <=> a.date}
     @events.uniq!
   end
 end
