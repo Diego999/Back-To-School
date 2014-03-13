@@ -1,10 +1,12 @@
 BackToSchool::Application.routes.draw do
 
+  get 'search' => 'search#index', as: 'search'
+
   get "users/show"
   root :to => "home#index"
 
   resources :promotions
-  resources :events
+  resources :events, only: :index
 
   resources :establishments do
     resources :promotions

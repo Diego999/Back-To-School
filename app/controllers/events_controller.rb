@@ -20,7 +20,4 @@ class EventsController < ApplicationController
     @events.sort!{|a,b| a.date <=> b.date}
     @events.uniq!
   end
-
-  def show
-  end
 end

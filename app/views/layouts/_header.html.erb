@@ -1,12 +1,14 @@
 <header id="site-header" class="row clearfix">
-  <div id="logo" class="col col2 first"><h1><a href="#">Back to school</a></h1></div>
+  <div id="logo" class="col col2 first"><h1><%= link_to('Back to school', root_path) %></h1></div>
   <!-- #logo -->
   <nav id="top-navigation" class="col col8">
     <ul>
-      <li><a class="active">Home</a></li>
-      <li><a href="#">Discussions</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Search</a></li>
+      <% if user_signed_in? %>
+          <li><%= link_to('Home', root_path, class: current_page?(controller: 'home') ? 'active' : nil) %></li>
+          <li><%= link_to('Discussions', discussions_path, class: current_page?(controller: 'discussions') ? 'active' : nil) %></li>
+          <li><%= link_to('Events', events_path, class: current_page?(controller: 'events') ? 'active' : nil) %></li>
+          <li><%= link_to('Search', search_path, class: current_page?(controller: 'search') ? 'active' : nil) %></li>
+      <% end %>
     </ul>
   </nav>
   <!-- #top-navigation -->
