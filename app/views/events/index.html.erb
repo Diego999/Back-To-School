@@ -1,0 +1,13 @@
+<% content_for :sidebar do %>
+    <p></p>
+<% end %>
+
+<div id="content" class="col col9 last">
+  <div id="discussion-list" class="row clearfix">
+    <% @events.each do |event| %>
+        <%= link_to event.discussion, :class => "message-link" do %>
+            <%= render event, :hide_author_link => true %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

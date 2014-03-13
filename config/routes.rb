@@ -4,6 +4,7 @@ BackToSchool::Application.routes.draw do
   root :to => "home#index"
 
   resources :promotions
+  resources :events
 
   resources :establishments do
     resources :promotions
