@@ -1,6 +1,6 @@
 <article class="event-item item">
   <p class="author-date"><strong>
-    <% if defined?(hide_author_link) %>
+    <% if defined?(hide_author_link) or event.user.promotions.size == 0%>
         <%= event.user.firstname + " " + event.user.lastname %>
     <% else %>
         <%= link_to event.user.firstname + " " + event.user.lastname, event.user %>
