@@ -1,4 +1,5 @@
 <% content_for :sidebar do %>
+    <%= render :partial => '/layouts/sidebar_discussion', :object => @participants, as: 'participants', locals: {:participants_follower => @participants_follower} %>
 <% end %>
 
 <div id="discussion-list" class="row clearfix">

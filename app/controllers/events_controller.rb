@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    # user part
     discussions = [Discussion.joins([:users]).where('users.id = ?', current_user)]
 
     current_user.promotions.each do |promotion|

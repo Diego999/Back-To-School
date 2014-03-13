@@ -1,0 +1,22 @@
+<div id="students-list-container" class="row">
+  <header><h2>Participants</h2></header>
+  <input type="checkbox" id="toggle-students" class="toogle"><label for="toggle-students"></label>
+
+  <div class="content">
+    <% participants.each do |student|%>
+        <%= render :partial => '/users/sidebar_user', :object => student, as: 'user', locals: {:can_email => true} %>
+    <% end %>
+  </div>
+</div>
+
+<% if participants_follower.size > 0 %>
+    <div id="followers-list-container" class="row">
+      <header><h2>Followers</h2></header>
+      <input type="checkbox" id="toggle-followers" class="toogle"><label for="toggle-followers"></label>
+      <div class="content">
+        <% participants_follower.each do |follower|%>
+            <%= render :partial => '/users/sidebar_user', :object => follower.user, as: 'user', locals: {:is_follower => true, :accepted => follower.accepted, :can_email => false} %>
+        <% end %>
+      </div>
+    </div>
+<% end %>
