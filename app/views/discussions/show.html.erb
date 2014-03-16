@@ -8,8 +8,6 @@
 
   <%= render 'messages/form' %>
 
-  <%= render @events %>
-
-  <%= render @messages %>
+  <%= render @items.sort_by(&:created_at).reverse %>
 
 </div><!-- #discussion-list -->

@@ -14,8 +14,8 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
-    @messages = @discussion.messages
-    @events = @discussion.events
+    @items = @discussion.messages
+    @items += @discussion.events
     @message = Message.new
   end
 
