@@ -1,0 +1,9 @@
+<div class="list-element" >
+  <a href="#"><%= link_to user.firstname + " " + user.lastname, user%></a>
+  <a href="#">
+    <% class_value = (defined?(can_email) and can_email) ? "list-button message-button" : ""%>
+    <% class_value += (defined?(is_follower) and defined?(accepted) and !accepted and is_follower) ? "list-button accept-button" : "" %>
+    <div class="<%= class_value %>"></div>
+  </a>
+</div>
+

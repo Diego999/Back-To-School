@@ -1,0 +1,14 @@
+<% if defined?(is_followed) and is_followed %>
+    <div class="list-element following-promotion">
+<% else %>
+    <div class="list-element main-promotion">
+<% end %>
+
+<a href="#"><%= link_to promotion.establishment.name + " | " + promotion.name, promotion%></a>
+
+<% if defined?(is_followed) and is_followed %>
+    <a href="#">
+      <div class="list-button leave-button"></div>
+    </a>
+<% end %>
+</div>

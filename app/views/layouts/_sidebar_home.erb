@@ -1,0 +1,35 @@
+<div id="promotions-list-container" class="row">
+  <header><h2>Promotions</h2></header>
+  <input type="checkbox" id="toggle-promotions" class="toogle"><label for="toggle-promotions"></label>
+
+  <div class="content">
+    <% promotions.each do |promotion| %>
+        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion' %>
+    <% end %>
+    <% followed_promotions.each do |promotion| %>
+        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals: {:is_followed => true} %>
+    <% end %>
+  </div>
+</div>
+
+<div id="students-list-container" class="row">
+  <header><h2>Students</h2></header>
+  <input type="checkbox" id="toggle-students" class="toogle"><label for="toggle-students"></label>
+
+  <div class="content">
+    <% promotion_students.each do |student|%>
+        <%= render :partial => '/users/sidebar_user', :object => student, as: 'user', locals: {:can_email => true} %>
+    <% end %>
+  </div>
+</div>
+
+
+<div id="followers-list-container" class="row">
+  <header><h2>Followers</h2></header>
+  <input type="checkbox" id="toggle-followers" class="toogle"><label for="toggle-followers"></label>
+  <div class="content">
+    <% promotion_followers.each do |follower|%>
+        <%= render :partial => '/users/sidebar_user', :object => follower.user, as: 'user', locals: {:is_follower => true, :accepted => follower.accepted, :can_email => false} %>
+    <% end %>
+  </div>
+</div>
