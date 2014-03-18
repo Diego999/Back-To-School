@@ -80,8 +80,39 @@ nav li {
 /* Lists */
 
 
+input[type="text"], input[type="password"], input[type="url"], input[type="email"],
+input.text, input.title, textarea{
+  border: 0px;
+  color: #676767;
+  display: block;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-style: italic;
+  height: 20px;
+  padding: 15px;
+  margin: 0;
+}
+
+input[type="submit"]{
+  background-color: #ffa084;
+  border: 0px;
+  float:left;
+  display: block;
+  height: 50px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  text-transform:uppercase;
+  width: 95px;
+}
+
+
+
 
 /* Forms */
+#hide{
+  display: none;
+}
+
 .message-form textarea {
 	border: 0px;
 	color: #676767;
