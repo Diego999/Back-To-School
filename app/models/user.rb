@@ -16,4 +16,32 @@ class User < ActiveRecord::Base
     firstname + " " + lastname
   end
 
+  def get_all_discussions
+    output = get_discussion_private + get_discussion_establishment
+    get_discussion_promotion(output)
+    output
+  end
+
+  def get_all_events
+    events = []
+    get_all_discussions.each do |d|
+      events.concat(d.events)
+    end
+    events
+  end
+
+  def get_discussion_private
+    Discussion.joins([:users]).where('users.id = ?', self)
+  end
+
+  def get_discussion_promotion(discussions)
+    self.promotions.each do |promotion|
+      discussions.concat(promotion.get_discussion)
+    end
+  end
+
+  def get_discussion_establishment
+    self.promotions[0].establishment.get_discussion
+  end
+
 end
