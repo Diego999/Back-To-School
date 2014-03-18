@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :follows_promotions, :class_name => 'Promotion', through: :followers
   has_and_belongs_to_many :discussions
 
+  def get_default_promotion
+    return promotions[0]
+  end
+
   def get_complete_name
     firstname + " " + lastname
   end
@@ -41,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def get_discussion_establishment
-    self.promotions[0].establishment.get_discussion
+    get_default_promotion.establishment.get_discussion
   end
 
 end

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
 
-    @establishment = @promotions[0].establishment
+    @establishment = current_user.get_default_promotion.establishment
 
     @followed_promotions = []
     @user.followers.each do |follow|

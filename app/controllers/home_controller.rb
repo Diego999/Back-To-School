@@ -8,8 +8,8 @@ class HomeController < ApplicationController
     current_user.followers.each do |follow|
       @followed_promotions.append(follow.promotion)
     end
-    @promotion_students = @promotions[0].students
+    @promotion_students = current_user.get_default_promotion.students
 
-    @promotion_followers = @promotions[0].followers
+    @promotion_followers = current_user.get_default_promotion.followers
   end
 end
