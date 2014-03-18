@@ -14,10 +14,11 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
-    @items = @discussion.get_items()
+    @items = @discussion.get_items
+    @event = Event.new
     @message = Message.new
 
-    @participants, @participants_follower = @discussion.fill_sidebar()
+    @participants, @participants_follower = @discussion.fill_sidebar
   end
 
 

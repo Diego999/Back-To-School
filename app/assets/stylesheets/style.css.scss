@@ -81,7 +81,7 @@ nav li {
 
 
 input[type="text"], input[type="password"], input[type="url"], input[type="email"],
-input.text, input.title, textarea{
+input.text, input.title, textarea,{
   border: 0px;
   color: #676767;
   display: block;
@@ -113,7 +113,8 @@ input[type="submit"]{
   display: none;
 }
 
-.message-form textarea {
+.message-form textarea,
+.event-form input[type=text] {
 	border: 0px;
 	color: #676767;
 	display: block;
@@ -128,7 +129,8 @@ input[type="submit"]{
 	width: 710px;
 }
 
-.message-form #message-submit {
+.message-form #message-submit,
+.event-form #event-submit{
 	background-color: #ffa084;
 	border: 0px;
 	float:left;
@@ -140,7 +142,9 @@ input[type="submit"]{
 	text-transform:uppercase;
 	width: 95px;
 }
-.message-form #message-submit:hover { background-color: #f33501; }
+.message-form #message-submit:hover,
+.event-form #event-submit:hover
+{ background-color: #f33501; }
 
 /* Footer at bottom */
 /*TODO*/
@@ -328,13 +332,15 @@ div#user-action a{
 #sidebar .list-element .accept-button:hover { background-color: #f33501; }
 
 /* toogle button logic */
-#sidebar input[type=checkbox].toogle {
+#sidebar input[type=checkbox].toogle,
+#content input[type=checkbox].toogle {
    position: absolute;
    top: -9999px;
    left: -9999px;
 }
 
-#sidebar label {
+#sidebar label,
+#content label.toogle-label{
   margin: 0;
   cursor: pointer;
   background-color: transparent;
@@ -347,14 +353,33 @@ div#user-action a{
 }
 
 
-/* Toggled State */
+/* Toggled State Sidebar*/
 #sidebar input[type=checkbox].toogle:checked + label + div {
    display: none;
 }
 
-/* Toggled State */
+/* Toggled State Sidebar*/
 #sidebar input[type=checkbox].toogle:checked + label {
    background: image-url("toggle-down.png") no-repeat center;
+}
+
+/* Toggled State Content Discussion*/
+#content input[type=checkbox].toogle:checked + label + form + form {
+  display: none;
+}
+#content input[type=checkbox].toogle:checked + label + form {
+  display: block;
+}
+#content input[type=checkbox].toogle + label + form + form {
+  display: block;
+}
+#content input[type=checkbox].toogle + label + form {
+  display: none;
+}
+
+/* Toggled State Content Discussion*/
+#content input[type=checkbox].toogle:checked + label {
+  background: image-url("toggle-down.png") no-repeat center;
 }
 
 

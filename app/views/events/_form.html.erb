@@ -1,0 +1,18 @@
+<%= form_for([@discussion, @event],:html =>{:class => "event-form clearfix" }) do |f| %>
+
+    <div class="clearfix">
+      <div>
+        <%= f.text_field( :name, rows: 1, cols: 40, class: "message", placeholder: "Event name" ) %>
+      </div>
+      <div>
+        <%= f.text_field( :location, rows: 1, cols: 40, class: "message", placeholder: "Location" ) %>
+      </div>
+      <div>
+        <%= f.text_field( :date, rows: 1, cols: 40, class: "message", placeholder: "Date" ) %>
+      </div>
+      <div>
+        <%= f.submit 'Put it !', :id => "event-submit" %>
+      </div>
+    </div>
+
+<% end %>
