@@ -365,16 +365,16 @@ div#user-action a{
 
 /* Toggled State Content Discussion*/
 #content input[type=checkbox].toogle:checked + label + form + form {
-  display: none;
+  display: block;
 }
 #content input[type=checkbox].toogle:checked + label + form {
-  display: block;
+  display: none;
 }
 #content input[type=checkbox].toogle + label + form + form {
-  display: block;
+  display: none;
 }
 #content input[type=checkbox].toogle + label + form {
-  display: none;
+  display: block;
 }
 
 /* Toggled State Content Discussion*/
