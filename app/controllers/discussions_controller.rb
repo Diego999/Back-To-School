@@ -8,6 +8,9 @@ class DiscussionsController < ApplicationController
       @discussions += promotion.discussions
       @discussions += promotion.establishment.discussions
     end
+    current_user.followers.each do |f|
+      @discussions += f.promotion.discussions
+    end
     @discussion = Discussion.new
     @discussions.uniq #TODO : Need to be tested
   end
