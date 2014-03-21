@@ -4,6 +4,7 @@ BackToSchool::Application.routes.draw do
 
   get "users/show"
   post "discussions/accept"
+  post "promotions/leave"
 
   root :to => "home#index"
 

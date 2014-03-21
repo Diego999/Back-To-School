@@ -10,4 +10,13 @@ class Promotion < ActiveRecord::Base
   def get_discussion
     Discussion.joins([:promotions]).where('promotions.id = ?', self)
   end
+
+  def leave(current_user)
+    followers.each do |f|
+      if f.user.id == current_user.id
+        f.destroy
+        break
+      end
+    end
+  end
 end

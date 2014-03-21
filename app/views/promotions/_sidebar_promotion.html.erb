@@ -4,11 +4,12 @@
     <div class="list-element main-promotion">
 <% end %>
 
-<a href="#"><%= link_to promotion.establishment.name + " | " + promotion.name, promotion%></a>
+<%= link_to promotion.establishment.name + " | " + promotion.name, promotion%>
 
 <% if defined?(is_followed) and is_followed %>
-    <a href="#">
-      <div class="list-button leave-button"></div>
-    </a>
+    <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'leave')) do |f| %>
+        <%= hidden_field_tag 'id', promotion.id %>
+        <%= f.submit '', :class => "list-button leave-button" %>
+    <% end %>
 <% end %>
 </div>
