@@ -15,6 +15,12 @@
       <article class="message-item item">
         <p class="message">
           <%= link_to promotion.name, promotion %>
+          <% unless promotion.user_is_in(current_user) %>
+              <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'follow')) do |f| %>
+                  <%= hidden_field_tag 'id', promotion.id %>
+                  <%= f.submit 'Follow !' %>
+              <% end %>
+          <% end %>
         </p>
       </article>
   <% end %>
@@ -30,6 +36,12 @@
       <article class="message-item item">
         <p class="message">
           <%= link_to promotion.name, promotion %>
+          <% unless promotion.user_is_in(current_user) %>
+              <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'follow')) do |f| %>
+                  <%= hidden_field_tag 'id', promotion.id %>
+                  <%= f.submit 'Follow !' %>
+              <% end %>
+          <% end %>
         </p>
       </article>
   <% end %>
