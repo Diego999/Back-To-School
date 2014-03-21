@@ -5,10 +5,10 @@
   <div id="discussion-list" class="row clearfix">
     <header><h2>Last discussions</h2></header>
     <!--<%= render 'discussions/form' %>-->
-    <% @discussions.each do |discussion| %>
+    <% @discussions.sort_by{|d| d.get_last_message_date}.reverse.each do |discussion| %>
         <%= link_to discussion, :class=>"message-link" do %>
             <article class="message-item item">
-              <p class="author-date">Last message : <%= discussion.updated_at.to_time.strftime('%e %B %Y at %H:%M')%></p>
+              <p class="author-date">Last message : <%= discussion.get_last_message_date.to_time.strftime('%e %B %Y at %H:%M')%></p>
               <p class="message">
                 <strong>
                     <%= truncate(discussion.get_destination_names.join(", "), length: 100, omission: ' ...and more', separator: ' ') %>

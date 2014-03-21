@@ -19,6 +19,15 @@ class Discussion < ActiveRecord::Base
     names_list
   end
 
+  def get_last_message_date
+    messages = self.messages.order('created_at DESC')
+    if messages.size == 0
+      created_at
+    else
+      messages[0].created_at
+    end
+  end
+
   def get_items()
     return messages + events
   end
