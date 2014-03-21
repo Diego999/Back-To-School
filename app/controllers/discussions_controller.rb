@@ -17,8 +17,11 @@ class DiscussionsController < ApplicationController
     @items = @discussion.get_items
     @event = Event.new
     @message = Message.new
-
+    @promotion = nil
     @participants, @participants_follower = @discussion.fill_sidebar
+    if @participants_follower.size != 0
+      @promotion = @participants_follower[0].promotion
+    end
   end
 
   def create
