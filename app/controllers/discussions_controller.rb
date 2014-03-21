@@ -35,15 +35,19 @@ class DiscussionsController < ApplicationController
     promotions = params.has_key?(:promotions) ? Promotion.find(params[:promotions]) : []
     establishments = params.has_key?(:establishments) ? Establishment.find(params[:establishments]) : []
 
-    d = Discussion.already_exists(users, promotions, establishments)
-    if d.size == 1
-      d = d[0]
+    if users.size == 1 && users[0].id == current_user.id
+      redirect_to :back
     else
-      d = Discussion.new
-      d.users = users
-      d.save
+      d = Discussion.already_exists(users, promotions, establishments)
+      if d.size == 1
+        d = d[0]
+      else
+        d = Discussion.new
+        d.users = users
+        d.save
+      end
+      redirect_to d
     end
-    redirect_to d
   end
 
   def accept
