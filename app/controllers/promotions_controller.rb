@@ -2,6 +2,7 @@ class PromotionsController < ApplicationController
   def show
     @promotion = Promotion.find(params[:id])
     @students = @promotion.students
+    @current_user = current_user
   end
 
   def leave

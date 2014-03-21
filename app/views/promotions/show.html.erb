@@ -8,6 +8,14 @@
         <article class="message-item item">
           <p class="message">
             <%= link_to student.firstname + " " + student.lastname, student%>
+            <% if !Discussion.discussion_exists_between_2_users(current_user, student) %>
+                <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'create')) do |f| %>
+                    <% [student.id, current_user.id].each do |u| %>
+                        <%= hidden_field_tag 'users[]', u %>
+                    <% end %>
+                    <%= f.submit 'Chat with me !'%>
+                <% end %>
+            <% end %>
           </p>
         </article>
     <% end %>
