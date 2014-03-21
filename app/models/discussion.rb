@@ -23,6 +23,19 @@ class Discussion < ActiveRecord::Base
     return messages + events
   end
 
+   def self.accept(current_user, user, promotion)
+    follower = nil
+    promotion.followers.each do |f|
+      if f.user == user
+        follower = f
+      end
+    end
+    if promotion.students.exists?(current_user) and !follower.nil? and !follower.accepted
+      follower.accepted = true
+      follower.save
+    end
+  end
+
   def fill_sidebar()
     establishments = self.establishments
     promotions = self.promotions

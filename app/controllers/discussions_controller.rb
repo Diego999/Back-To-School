@@ -23,24 +23,15 @@ class DiscussionsController < ApplicationController
 
   def create
     users = User.find(params[:users])
-    promotions = Promotion.find(params[:promotions])
-    establishments = Establishment.find(params[:establishments])
+    promotions = params.has_key?(:promotions) ? Promotion.find(params[:promotions]) : []
+    establishments = params.has_key?(:establishments) ? Establishment.find(params[:establishments]) : []
+
+
+    #redirect_to discussion
   end
 
   def accept
-    user = User.find(params[:user])
-    promotion = Promotion.find(params[:promotion])
-
-    follower = nil
-    promotion.followers.each do |f|
-      if f.user == user
-        follower = f
-      end
-    end
-    if promotion.students.exists?(current_user) and !follower.nil? and !follower.accepted
-      follower.accepted = true
-      follower.save
-    end
+    Discussion.accept(current_user, User.find(params[:user]), Promotion.find(params[:promotion]))
     redirect_to :back
   end
 end
