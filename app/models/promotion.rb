@@ -19,4 +19,25 @@ class Promotion < ActiveRecord::Base
       end
     end
   end
+
+  def user_is_in(user)
+    o = false
+    user.promotions.each do |p|
+      if p.id == id
+        o = true
+        break
+      end
+    end
+    unless o
+      followers.each do |f|
+        a = f.user.id
+        b = user.id
+        if f.user.id == user.id
+          o = true
+          break
+        end
+      end
+    end
+    o
+  end
 end
