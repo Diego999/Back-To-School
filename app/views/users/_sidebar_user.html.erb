@@ -1,9 +1,24 @@
 <div class="list-element" >
-  <a href="#"><%= link_to user.firstname + " " + user.lastname, user%></a>
-  <a href="#">
-    <% class_value = (defined?(can_email) and can_email) ? "list-button message-button" : ""%>
-    <% class_value += (defined?(is_follower) and defined?(accepted) and !accepted and is_follower) ? "list-button accept-button" : "" %>
-    <div class="<%= class_value %>"></div>
-  </a>
+  <%= link_to user.firstname + " " + user.lastname, user%>
+    <% mail = (defined?(can_email) and can_email) ? "list-button message-button" : ""%>
+    <% follow = (defined?(is_follower) and defined?(accepted) and !accepted and is_follower) ? "list-button accept-button" : "" %>
+
+  <% unless mail.empty? %>
+      <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'create')) do |f| %>
+        <% [user.id, current_user.id].each do |u| %>
+            <%= hidden_field_tag 'users[]', u %>
+        <% end %>
+        <%= f.submit '', :class => mail%>
+      <% end %>
+  <% end %>
+
+  <% unless follow.empty? %>
+      <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'accept')) do |f| %>
+          <%= hidden_field_tag 'user', user.id %>
+          <%= hidden_field_tag 'promotion', promotion.id %>
+          <%= f.submit '', :class => follow%>
+      <% end %>
+  <% end %>
+
 </div>
 

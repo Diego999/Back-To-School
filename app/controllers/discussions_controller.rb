@@ -21,5 +21,26 @@ class DiscussionsController < ApplicationController
     @participants, @participants_follower = @discussion.fill_sidebar
   end
 
+  def create
+    users = User.find(params[:users])
+    promotions = Promotion.find(params[:promotions])
+    establishments = Establishment.find(params[:establishments])
+  end
 
+  def accept
+    user = User.find(params[:user])
+    promotion = Promotion.find(params[:promotion])
+
+    follower = nil
+    promotion.followers.each do |f|
+      if f.user == user
+        follower = f
+      end
+    end
+    if promotion.students.exists?(current_user) and !follower.nil? and !follower.accepted
+      follower.accepted = true
+      follower.save
+    end
+    redirect_to :back
+  end
 end

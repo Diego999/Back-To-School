@@ -3,6 +3,8 @@ BackToSchool::Application.routes.draw do
   get 'search' => 'search#index', as: 'search'
 
   get "users/show"
+  post "discussions/accept"
+
   root :to => "home#index"
 
   resources :promotions

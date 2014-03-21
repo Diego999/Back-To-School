@@ -4,10 +4,10 @@
 
   <div class="content">
     <% promotions.each do |promotion| %>
-        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion' %>
+        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals:{:current_user => @current_user} %>
     <% end %>
     <% followed_promotions.each do |promotion| %>
-        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals: {:is_followed => true} %>
+        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals: {:is_followed => true, :current_user => @current_user} %>
     <% end %>
   </div>
 </div>
@@ -18,7 +18,7 @@
 
   <div class="content">
     <% promotion_students.each do |student|%>
-        <%= render :partial => '/users/sidebar_user', :object => student, as: 'user', locals: {:can_email => true} %>
+        <%= render :partial => '/users/sidebar_user', :object => student, as: 'user', locals: {:can_email => true, :current_user => @current_user} %>
     <% end %>
   </div>
 </div>
@@ -29,7 +29,7 @@
   <input type="checkbox" id="toggle-followers" class="toogle"><label for="toggle-followers"></label>
   <div class="content">
     <% promotion_followers.each do |follower|%>
-        <%= render :partial => '/users/sidebar_user', :object => follower.user, as: 'user', locals: {:is_follower => true, :accepted => follower.accepted, :can_email => false} %>
+        <%= render :partial => '/users/sidebar_user', :object => follower.user, as: 'user', locals: {:is_follower => true, :accepted => follower.accepted, :can_email => false, :current_user => @current_user, :promotion => follower.promotion} %>
     <% end %>
   </div>
 </div>
