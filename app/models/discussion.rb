@@ -36,6 +36,50 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  def self.already_exists(_users, _promotions, _establishments)
+    discussions = Discussion.all
+    users = Discussion.already_exists_prepare_array(_users)
+    promotions = Discussion.already_exists_prepare_array(_promotions)
+    establishments = Discussion.already_exists_prepare_array(_establishments)
+
+    kept_discussions = []
+    discussions.each do |d|
+      aa = Discussion.already_exists_check_array(users, Discussion.already_exists_prepare_array(d.users))
+      bb = Discussion.already_exists_check_array(promotions, Discussion.already_exists_prepare_array(d.promotions))
+      cc = Discussion.already_exists_check_array(establishments, Discussion.already_exists_prepare_array(d.establishments))
+      if aa and bb and cc
+        kept_discussions.append(d)
+        break
+      end
+    end
+    kept_discussions
+  end
+
+  def self.already_exists_prepare_array(a)
+    a.sort_by!(&:id)
+    o = []
+    a.each do |d|
+      o.append(d)
+    end
+    o
+  end
+
+  def self.already_exists_check_array(a, b)
+    fit = (a.empty? and b.empty?)
+    if a.size > 0 and a.size == b.size
+      fit = true
+      b.each_with_index do |u, i|
+        if u.id != a[i].id
+          fit = false
+        end
+        unless fit
+          break
+        end
+      end
+    end
+    fit
+  end
+
   def fill_sidebar()
     establishments = self.establishments
     promotions = self.promotions
