@@ -47,15 +47,15 @@ class Discussion < ActiveRecord::Base
 
   def self.already_exists(_users, _promotions, _establishments)
     discussions = Discussion.all
-    users = Discussion.already_exists_prepare_array(_users)
-    promotions = Discussion.already_exists_prepare_array(_promotions)
-    establishments = Discussion.already_exists_prepare_array(_establishments)
+    users = Discussion.convert_activerecord_to_array(_users)
+    promotions = Discussion.convert_activerecord_to_array(_promotions)
+    establishments = Discussion.convert_activerecord_to_array(_establishments)
 
     kept_discussions = []
     discussions.each do |d|
-      aa = Discussion.already_exists_check_array(users, Discussion.already_exists_prepare_array(d.users))
-      bb = Discussion.already_exists_check_array(promotions, Discussion.already_exists_prepare_array(d.promotions))
-      cc = Discussion.already_exists_check_array(establishments, Discussion.already_exists_prepare_array(d.establishments))
+      aa = Discussion.already_exists_check_array(users, Discussion.convert_activerecord_to_array(d.users))
+      bb = Discussion.already_exists_check_array(promotions, Discussion.convert_activerecord_to_array(d.promotions))
+      cc = Discussion.already_exists_check_array(establishments, Discussion.convert_activerecord_to_array(d.establishments))
       if aa and bb and cc
         kept_discussions.append(d)
         break
@@ -64,7 +64,7 @@ class Discussion < ActiveRecord::Base
     kept_discussions
   end
 
-  def self.already_exists_prepare_array(a)
+  def self.convert_activerecord_to_array(a)
     a.sort_by!(&:id)
     o = []
     a.each do |d|
@@ -87,6 +87,17 @@ class Discussion < ActiveRecord::Base
       end
     end
     fit
+  end
+
+  def self.discussion_exists_between_2_users(u, v)
+    out = false
+    (Discussion.convert_activerecord_to_array(u.discussions) & Discussion.convert_activerecord_to_array(v.discussions)).each do |d|
+      if d.users.size == 2
+        out = true
+        break
+      end
+    end
+    out
   end
 
   def fill_sidebar()

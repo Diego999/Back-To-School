@@ -4,7 +4,7 @@
 
   <div class="content">
     <% participants.each do |student|%>
-        <%= render :partial => '/users/sidebar_user', :object => student, as: 'user', locals: {:can_email => true} %>
+        <%= render :partial => '/users/sidebar_user', :object => student, as: 'user', locals: {:can_email => !Discussion.discussion_exists_between_2_users(current_user, student)} %>
     <% end %>
   </div>
 </div>
@@ -15,7 +15,7 @@
       <input type="checkbox" id="toggle-followers" class="toogle"><label for="toggle-followers"></label>
       <div class="content">
         <% participants_follower.each do |follower|%>
-            <%= render :partial => '/users/sidebar_user', :object => follower.user, as: 'user', locals: {:is_follower => true, :accepted => follower.accepted, :can_email => false, :promotion => promotion} %>
+            <%= render :partial => '/users/sidebar_user', :object => follower.user, as: 'user', locals: {:is_follower => true, :accepted => follower.accepted, :can_email => !Discussion.discussion_exists_between_2_users(current_user, student), :promotion => promotion} %>
         <% end %>
       </div>
     </div>

@@ -22,6 +22,7 @@ class DiscussionsController < ApplicationController
     if @participants_follower.size != 0
       @promotion = @participants_follower[0].promotion
     end
+    @current_user = current_user
   end
 
   def create
