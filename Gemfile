@@ -28,3 +28,6 @@ end
 
 gem 'devise'
 gem 'authority'
+
+# Use capistrano for deployment
+gem 'capistrano'
