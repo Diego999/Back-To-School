@@ -16,9 +16,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
-config/initializers/secret_token.rb
 .idea/*
 
 config/database.yml
-
 config/initializers/devise.rb
