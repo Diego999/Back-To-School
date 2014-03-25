@@ -29,5 +29,8 @@ end
 gem 'devise'
 gem 'authority'
 
-# Use capistrano for deployment
-gem 'capistrano'
+# Use Capistrano for deployment
+gem 'capistrano', group: :development
+gem 'capistrano-bundle'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
