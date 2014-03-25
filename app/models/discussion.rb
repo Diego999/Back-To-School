@@ -1,4 +1,7 @@
 class Discussion < ActiveRecord::Base
+  include Authority::Abilities
+  self.authorizer_name = 'DiscussionAuthorizer'
+
   has_many :events
   has_many :messages
   has_and_belongs_to_many :promotions

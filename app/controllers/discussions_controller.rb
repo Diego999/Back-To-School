@@ -19,6 +19,9 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
+
+    authorize_action_for(@discussion)
+
     @items = @discussion.get_items
     @event = Event.new
     @message = Message.new

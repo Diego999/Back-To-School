@@ -1,6 +1,17 @@
+class UserValidator < ActiveModel::Validator
+
+  def validate(record)
+    if record.est_admin == true && record.establishment == nil
+      record.errors[:est_admin] << "Define an establishment if you want to grant establishement admin rights."
+    end
+    if record.student == true && record.professor == true
+      record.errors[:est_admin] << "Not allowed to be student and professor at the same time."
+    end
+  end
+end
+
+
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -14,6 +25,11 @@ class User < ActiveRecord::Base
   has_many :follows_promotions, :class_name => 'Promotion', through: :followers
   has_and_belongs_to_many :discussions
 
+  validates_presence_of :firstname, :message => "Firstname required."
+  validates_presence_of :lastname, :message => "Lastname required."
+  validates_length_of :email, :within => 6..100, :message => "E-Mail adress length has to be minimum 6 characters.", :allow_blank => false
+  validates_with UserValidator
+  
   def get_default_promotion
     return promotions[0]
   end
@@ -51,14 +67,14 @@ class User < ActiveRecord::Base
   end
 
   def accepted_followed_promotions
-    result = Promotion.joins("INNER JOIN followers ON promotions.id = followers.promotion_id AND followers.accepted = true").where("followers.user_id = %s", self.id)
+    Promotion.joins(:followers).where("followers.user_id = ?", self.id)
   end
 
   def accepted_followed_discussions
-    result = Discussion.joins("INNER JOIN discussions_promotions ON discussions.id = discussions_promotions.discussion_id") \
-                       .joins("INNER JOIN promotions ON discussions_promotions.promotion_id = promotions.id") \
-                       .joins("INNER JOIN followers ON promotions.id = followers.promotion_id AND followers.accepted = true") \
-                       .where("followers.user_id = %s", self.id)
+    Discussion.joins("INNER JOIN discussions_promotions ON discussions.id = discussions_promotions.discussion_id") \
+              .joins("INNER JOIN promotions ON discussions_promotions.promotion_id = promotions.id") \
+              .joins("INNER JOIN followers ON promotions.id = followers.promotion_id AND followers.accepted = true") \
+              .where("followers.user_id = %s", self.id)
   end
 
   def promotions_discussions
@@ -68,8 +84,24 @@ class User < ActiveRecord::Base
               .where("promotions_users.user_id = %s", self.id)
   end
 
+  def general_establishment
+    est = nil
+
+    if establishment != nil
+      est = establishment
+    else
+      est = promotions.first.establishment
+    end
+
+    est
+  end
+
+  def establishment_discussions
+    Discussion.joins(:establishments).where("establishments.id = ?", self.general_establishment)
+  end
+
   def discussion_participant?(discussion)
-    discussions.include?(discussion) || promotions_discussions.include?(discussion) || accepted_followed_discussions.include?(discussion)
+    discussions.include?(discussion) || promotions_discussions.include?(discussion) || accepted_followed_discussions.include?(discussion) || establishment_discussions.include?(discussion)
   end
 
 end
