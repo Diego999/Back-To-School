@@ -6,7 +6,7 @@
   <header><h2>
     <%= truncate(@discussion.get_destination_names.join(", "), length: 70, omission: ' ...', separator: ' ') %>
   </h2></header>
-  <input type="checkbox" id="toggle-followers" class="toogle"><label class="toogle-label" for="toggle-followers"></label>
+  <input type="checkbox" id="toggle-discussion-forms" class="toogle"><label class="toogle-label" for="toggle-discussion-forms"></label>
 
 
   <%= render 'messages/form' %>
