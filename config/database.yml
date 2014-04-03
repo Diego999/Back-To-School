@@ -33,7 +33,7 @@ production:
   adapter: mysql2
   encoding: utf8
   database: backtoschool_production
-  username: root
-  password: ""
+  username: APP_CONFIG[:db_username]
+  password: APP_CONFIG[:db_password]
   host: 127.0.0.1
   port: 3306
