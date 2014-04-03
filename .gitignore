@@ -20,3 +20,4 @@ pickle-email-*.html
 
 config/database.yml
 config/initializers/devise.rb
+config/back_to_school.yml
