@@ -10,7 +10,7 @@
         <% unless promotion.user_is_in(current_user) %>
             <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'follow')) do |f| %>
                 <%= hidden_field_tag 'id', promotion.id %>
-                <%= f.submit '', :class => ["list-button", "message-button"] %>
+                <%= f.submit '', :class => ["list-button", "follow-button"] %>
             <% end %>
         <% end %>
     </article>
