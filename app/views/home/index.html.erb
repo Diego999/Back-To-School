@@ -1,5 +1,7 @@
 <% provide(:title, 'Home') %>
 
 <% content_for :sidebar do %>
-    <%= render :partial => '/layouts/sidebar_home', locals: {:promotions => @promotions, :followed_promotions => @followed_promotions, :promotion_students => @promotion_students, :promotion_followers => @promotion_followers, :current_user => @current_user }%>
+    <%= render :partial => '/layouts/sidebar_home', locals: {:selected_promotion => @selected_promotion, :promotions => @promotions, :followed_promotions => @followed_promotions, :promotion_students => @promotion_students, :promotion_followers => @promotion_followers, :current_user => @current_user }%>
 <% end %>
+
+<%= render :partial => 'discussions/discussion', :object => @discussion, locals:{:items => @items, :message => @message, :event => @event} %>

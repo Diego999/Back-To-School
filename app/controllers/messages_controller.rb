@@ -6,6 +6,6 @@ class MessagesController < ApplicationController
     @message = @discussion.messages.create(params[:message].permit(:message))
     @message.user = current_user
     @message.save
-    redirect_to discussion_path(@discussion)
+    redirect_to :back
   end
 end

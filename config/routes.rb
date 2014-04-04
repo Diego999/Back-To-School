@@ -1,6 +1,7 @@
 BackToSchool::Application.routes.draw do
 
   get 'search' => 'search#index', as: 'search'
+  get 'home/:id' => 'home#index', as: 'home'
 
   get "users/show"
   post "discussions/accept"

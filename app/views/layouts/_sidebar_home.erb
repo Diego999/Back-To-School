@@ -4,10 +4,10 @@
 
   <div class="content">
     <% promotions.each do |promotion| %>
-        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals:{:current_user => @current_user} %>
+        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals:{:selected_promotion => selected_promotion.id == promotion.id, :current_user => @current_user} %>
     <% end %>
     <% followed_promotions.each do |promotion| %>
-        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals: {:is_followed => true, :current_user => @current_user} %>
+        <%= render :partial => '/promotions/sidebar_promotion', :object => promotion, as: 'promotion', locals: {:selected_promotion => selected_promotion.id == promotion.id, :is_followed => true, :current_user => @current_user} %>
     <% end %>
   </div>
 </div>

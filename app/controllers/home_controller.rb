@@ -9,8 +9,15 @@ class HomeController < ApplicationController
     current_user.followers.each do |follow|
       @followed_promotions.append(follow.promotion)
     end
-    @promotion_students = current_user.get_default_promotion.students
+    @selected_promotion = params.has_key?(:id) ? Promotion.find(params[:id]) : current_user.get_default_promotion
+    @promotion_students = @selected_promotion.students
 
-    @promotion_followers = current_user.get_default_promotion.followers
+    @promotion_followers = @selected_promotion.followers
+
+    @discussion = @selected_promotion.get_discussion
+    @items = @discussion.get_items
+
+    @event = Event.new
+    @message = Message.new
   end
 end

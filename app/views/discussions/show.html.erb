@@ -2,4 +2,4 @@
     <%= render :partial => '/layouts/sidebar_discussion', :object => @participants, as: 'participants', locals: {:participants_follower => @participants_follower, :promotion => @promotion, :current_user => @current_user} %>
 <% end %>
 
-<%= render :partial => 'discussions/discussion', :object => @discussion, locals:{:items => @items} %>
+<%= render :partial => 'discussions/discussion', :object => @discussion, locals:{:items => @items, :message => @message, :event => @event} %>

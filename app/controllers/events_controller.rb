@@ -10,6 +10,6 @@ class EventsController < ApplicationController
     @event = @discussion.events.create(params[:event].permit(:name,:location,:date))
     @event.user = current_user
     @event.save
-    redirect_to discussion_path(@discussion)
+    redirect_to :back
   end
 end
