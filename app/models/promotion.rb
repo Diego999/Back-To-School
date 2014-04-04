@@ -8,7 +8,7 @@ class Promotion < ActiveRecord::Base
   validates :name, presence: true
 
   def get_discussion
-    Discussion.joins([:promotions]).where('promotions.id = ?', self)[0]
+    Discussion.joins([:promotions]).where('promotions.id = ?', self)
   end
 
   def leave(current_user)

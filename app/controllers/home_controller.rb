@@ -14,7 +14,7 @@ class HomeController < ApplicationController
 
     @promotion_followers = @selected_promotion.followers
 
-    @discussion = @selected_promotion.get_discussion
+    @discussion = @selected_promotion.get_discussion[0]
     @items = @discussion.get_items
 
     @event = Event.new

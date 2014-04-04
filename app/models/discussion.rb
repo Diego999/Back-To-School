@@ -32,7 +32,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def get_items()
-    return messages + events
+    messages + events
   end
 
    def self.accept(current_user, user, promotion)
