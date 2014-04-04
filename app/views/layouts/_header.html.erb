@@ -7,6 +7,7 @@
           <li><%= link_to('Home', root_path, class: params[:controller] == 'home' ? 'active' : nil) %></li>
           <li><%= link_to('Discussions', discussions_path, class: params[:controller] == 'discussions' ? 'active' : nil) %></li>
           <li><%= link_to('Events', events_path, class: params[:controller] == 'events' ? 'active' : nil) %></li>
+          <li><%= link_to(current_user.general_establishment.name, @current_user.general_establishment, class: params[:establishement] == 'events' ? 'active' : nil) %></li>
           <li><%= link_to('Search', search_path, class: params[:controller] == 'search' ? 'active' : nil) %></li>
       <% end %>
     </ul>
