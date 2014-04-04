@@ -397,6 +397,10 @@ div#user-action a{
   float:right;
   margin-top: -50px;
 }
+#content label.toogle-label{
+  background: image-url("to-event-form-icon.png") no-repeat center;
+  margin-right: 5px;
+}
 
 
 /* Toggled State Sidebar*/
@@ -425,7 +429,7 @@ div#user-action a{
 
 /* Toggled State Content Discussion*/
 #content input[type=checkbox].toogle:checked + label {
-  background: image-url("toggle-down.png") no-repeat center;
+  background: image-url("to-message-form-icon.png") no-repeat center;
 }
 
 
