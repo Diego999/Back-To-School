@@ -2,19 +2,4 @@
     <%= render :partial => '/layouts/sidebar_discussion', :object => @participants, as: 'participants', locals: {:participants_follower => @participants_follower, :promotion => @promotion, :current_user => @current_user} %>
 <% end %>
 
-<div id="discussion-list" class="row clearfix">
-  <header><h2>
-    <%= truncate(@discussion.get_destination_names.join(", "), length: 70, omission: ' ...', separator: ' ') %>
-  </h2></header>
-  <input type="checkbox" id="toggle-discussion-forms" class="toogle"><label class="toogle-label" for="toggle-discussion-forms"></label>
-
-
-  <%= render 'messages/form' %>
-
-  <%= render 'events/form' %>
-
-
-
-  <%= render @items.sort_by(&:created_at).reverse %>
-
-</div><!-- #discussion-list -->
+<%= render :partial => 'discussions/discussion', :object => @discussion, locals:{:items => @items} %>
