@@ -7,6 +7,9 @@ class UserValidator < ActiveModel::Validator
     if record.student == true && record.professor == true
       record.errors[:est_admin] << "Not allowed to be student and professor at the same time."
     end
+    if (record.student == true || record.professor == true) && record.promotions.count == 0
+      record.errors[:promotions] << "Not allowed to create a professor or a student, without an associated promotion."
+    end
   end
 end
 
@@ -63,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def get_discussion_establishment
-    get_default_promotion.establishment.get_discussion
+    general_establishment.get_discussion
   end
 
   def accepted_followed_promotions
