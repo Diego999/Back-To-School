@@ -5,18 +5,16 @@
   <div id="discussion-list" class="row clearfix">
     <header><h2><%=@promotion.name%></h2></header>
     <% @students.each do |student| %>
-        <article class="message-item item">
-          <p class="message">
+        <article class="item list-element">
             <%= link_to student.firstname + " " + student.lastname, student%>
             <% if !Discussion.discussion_exists_between_2_users(current_user, student) %>
                 <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'create')) do |f| %>
                     <% [student.id, current_user.id].each do |u| %>
                         <%= hidden_field_tag 'users[]', u %>
                     <% end %>
-                    <%= f.submit 'Chat with me !'%>
+                    <%= f.submit '', :class => ["list-button", "message-button"] %>
                 <% end %>
             <% end %>
-          </p>
         </article>
     <% end %>
   </div>

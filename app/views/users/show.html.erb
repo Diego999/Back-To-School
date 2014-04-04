@@ -5,44 +5,40 @@
   <div id="discussion-list" class="row clearfix">
     <header><h2><%= @user.firstname %> <%= @user.lastname %> | <%= link_to @establishment.name, @establishment %></h2></header>
 
-    <article class="event-item item">
+    <article class="list-title item">
       <p class="message">
         <strong>Promotions</strong>
       </p>
     </article>
 
   <% @promotions.each do |promotion| %>
-      <article class="message-item item">
-        <p class="message">
+      <article class="item list-element">
           <%= link_to promotion.name, promotion %>
           <% unless promotion.user_is_in(current_user) %>
               <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'follow')) do |f| %>
                   <%= hidden_field_tag 'id', promotion.id %>
-                  <%= f.submit 'Follow !' %>
+                  <%= f.submit '', :class => ["list-button", "message-button"] %>
               <% end %>
           <% end %>
-        </p>
       </article>
   <% end %>
 
 
-    <article class="event-item item">
+    <article class="list-title item">
       <p class="message">
         <strong>Followed Promotions</strong>
       </p>
     </article>
 
   <% @followed_promotions.each do |promotion| %>
-      <article class="message-item item">
-        <p class="message">
+      <article class="item list-element">
           <%= link_to promotion.name, promotion %>
           <% unless promotion.user_is_in(current_user) %>
               <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'follow')) do |f| %>
                   <%= hidden_field_tag 'id', promotion.id %>
-                  <%= f.submit 'Follow !' %>
+                  <%= f.submit '', :class => ["list-button", "message-button"] %>
               <% end %>
           <% end %>
-        </p>
       </article>
   <% end %>
   </div>

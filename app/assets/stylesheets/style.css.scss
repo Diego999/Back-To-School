@@ -243,6 +243,8 @@ div#user-action a{
 	border-bottom: 1px solid #393d40;
 }
 
+#discussion-list .message-link article.event-item:hover p { color: #000000;}
+
 #discussion-list article.item p { margin: 0; }
 
 #discussion-list article.item .author-date {
@@ -270,6 +272,45 @@ div#user-action a{
 .message-link:hover { color: #676767; }
 #discussion-list .message-link:hover article { background-color: #dfdfdf; }
 
+/* Item list */
+#content .list-element {
+  background-color: #fff;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+#content .list-element a{
+  color: #676767;
+  font-weight: 300;
+}
+
+#content .list-element a:hover {
+  border-bottom: 1px solid #676767;
+}
+
+#content .list-element .list-button{
+  display: none;
+  float: right;
+  height:50px;
+  margin: -50px -20px;
+  width: 50px;
+}
+#content .list-element:hover .list-button { display: block; }
+#content .list-element .message-button {
+  height: 80px;
+  margin: -60px -20px;
+  width: 80px;
+}
+
+
+#content .list-title {
+  background-color: #2d3133;
+  border-bottom: 1px solid #393d40;
+  color: #fff;
+}
+
+#content .list-title p {
+  margin-top: 0 !important;
+}
 
 /* 06 SIDEBAR
 -------------------------------------------------------------- */
@@ -314,13 +355,14 @@ div#user-action a{
 }
 
 /* list button */
-#sidebar .list-element .list-button {
+#sidebar .list-element .list-button{
 	display: none;
 	float: right;
 	height:50px;
 	margin: -50px -20px;
 	width: 50px;
 }
+
 #sidebar .list-element:hover .list-button { display: block; }
 
 /* .leave-button */
@@ -328,11 +370,11 @@ div#user-action a{
 #sidebar .list-element:hover .leave-button:hover { background-color: #f33501; }
 
 /* .message-button */
-#sidebar .list-element .message-button { background: #bababa image-url("mail-icon.png") no-repeat center;; }
-#sidebar .list-element:hover .message-button:hover { background-color: #676767; }
+.list-element .message-button { background: #bababa image-url("mail-icon.png") no-repeat center; }
+.list-element:hover .message-button:hover { background-color: #676767; }
 
 /* .accept-button */
-#sidebar .list-element .accept-button { background: #ffa084 image-url("valid-icon.png") no-repeat center;; display: block; }
+#sidebar .list-element .accept-button { background: #ffa084 image-url("valid-icon.png") no-repeat center; display: block; }
 #sidebar .list-element .accept-button:hover { background-color: #f33501; }
 
 /* toogle button logic */
