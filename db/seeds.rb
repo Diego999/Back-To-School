@@ -8,7 +8,7 @@ end
 
 establishments = Establishment.all
 
-10.times { Discussion.create }
+10.times { Discussion.new().save(validate: false) }
 discussions = Discussion.all
 
 establishments[0].discussions << discussions[0]
@@ -32,7 +32,7 @@ user_list = [
     ['Cyril', 'Machin', 'cyril.machi@he-arc.ch', 'Cyril1234', false, false, false, true, nil, [discussions[9]]]
 ]
 user_list.each do |user|
-  User.create(:firstname => user[0], :lastname => user[1], :email => user[2], :password => user[3], :admin => user[4], :est_admin => user[5], :professor => user[6], :student => user[7], :establishment => user[8], :discussions => user[9])
+  User.new(:firstname => user[0], :lastname => user[1], :email => user[2], :password => user[3], :admin => user[4], :est_admin => user[5], :professor => user[6], :student => user[7], :establishment => user[8], :discussions => user[9]).save(validate: false)
 end
 users = User.all
 
