@@ -1,3 +1,12 @@
+class DiscussionValidator < ActiveModel::Validator
+
+  def validate(record)
+    if record.promotions.count <= 0 && record.users.count <= 0 && record.establishments.count <= 0
+      record.errors[:users] << "Discussion must have at least one promotion, one users or one establishment as participant.\n"
+    end
+  end
+end
+
 class Discussion < ActiveRecord::Base
   include Authority::Abilities
   self.authorizer_name = 'DiscussionAuthorizer'
@@ -7,6 +16,8 @@ class Discussion < ActiveRecord::Base
   has_and_belongs_to_many :promotions
   has_and_belongs_to_many :users
   has_and_belongs_to_many :establishments
+
+  validates_with DiscussionValidator
 
   def get_destination_names
     names_list = []
@@ -22,6 +33,22 @@ class Discussion < ActiveRecord::Base
     names_list
   end
 
+  def participants
+    participant_list = []
+
+    participant_list += users
+
+    promotions.each do |p|
+      participant_list += p.users
+    end
+
+    establishments.each do |e|
+      participant_list += e.users
+    end
+
+    participant_list
+  end
+
   def get_last_message_date
     messages = self.messages.order('created_at DESC')
     if messages.size == 0
@@ -35,7 +62,7 @@ class Discussion < ActiveRecord::Base
     messages + events
   end
 
-   def self.accept(current_user, user, promotion)
+  def self.accept(current_user, user, promotion)
     follower = nil
     promotion.followers.each do |f|
       if f.user == user
@@ -119,7 +146,7 @@ class Discussion < ActiveRecord::Base
 
     # We remove the user of follower if he is already in participants
     participants.each do |p|
-      participants_follower.reject!{|f| f.user.id == p.id}
+      participants_follower.reject! { |f| f.user.id == p.id }
     end
 
     return participants, participants_follower
