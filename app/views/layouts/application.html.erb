@@ -10,21 +10,18 @@
   <%= render 'layouts/iehacks' %>
 </head>
 <body>
-
 <div id="site-container" class="contentcenter clearfix">
 
   <%= render 'layouts/header' %>
 
   <main id="site-page" class="clearfix">
-    <div id="sidebar" class="col col3 first"><%=yield :sidebar%></div><!-- Do not put this on multilines, or it breacks .col:empty -->
-
     <div id="content" class="col col9 last">
 
       <%= render 'layouts/notifications' %>
 
       <%= yield %>
-
     </div>
+    <div id="sidebar" class="col col3 first"><%=yield :sidebar%></div><!-- Do not put this on multilines, or it breacks .col:empty -->
   </main>
 
   <%= render 'layouts/footer' %>

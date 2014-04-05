@@ -1,22 +1,21 @@
 <header id="site-header" class="row clearfix">
-  <div id="logo" class="col col2 first"><h1><%= link_to('Back to school', root_path) %></h1></div>
+  <div id="logo" class="col col3 first"><h1><%= link_to('Back to school', root_path) %></h1></div>
   <!-- #logo -->
-  <nav id="top-navigation" class="col col8">
+  <div id="user-action" class="col last">
+    <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+    <% end %>
+  </div>
+  <!-- #user-action -->
+  <nav id="top-navigation" class="col">
     <ul>
       <% if user_signed_in? %>
-          <li><%= link_to('Home', root_path, class: params[:controller] == 'home' ? 'active' : nil) %></li>
+          <li><%= link_to(current_user.general_establishment.name, @current_user.general_establishment, class: params[:establishement] == 'events' ? 'active' : nil) %></li>
           <li><%= link_to('Discussions', discussions_path, class: params[:controller] == 'discussions' ? 'active' : nil) %></li>
           <li><%= link_to('Events', events_path, class: params[:controller] == 'events' ? 'active' : nil) %></li>
-          <li><%= link_to(current_user.general_establishment.name, @current_user.general_establishment, class: params[:establishement] == 'events' ? 'active' : nil) %></li>
           <li><%= link_to('Search', search_path, class: params[:controller] == 'search' ? 'active' : nil) %></li>
       <% end %>
     </ul>
   </nav>
   <!-- #top-navigation -->
-  <div id="user-action" class="col col2 last">
-    <% if user_signed_in? %>
-        <%= link_to('Profile', destroy_user_session_path, :method => :delete) %>
-    <% end %>
-  </div>
-  <!-- #user-action -->
 </header>
