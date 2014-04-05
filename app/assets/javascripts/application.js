@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.ui.datepicker
+//= require jquery.ui.slider
 //= require_tree .
-
-
 
 $( document ).ready(function() {
     /*
@@ -24,4 +24,13 @@ $( document ).ready(function() {
     $(".flashbox .close").click(function(){
         $(this).parent().slideUp();
     });
+
+    /*
+     * Calls a jquery ui datetimepicker
+     */
+    $('.datetimepicker').datetimepicker({
+        dateFormat: "yy-mm-dd",
+        timeFormat: "hh:mm:00"
+    });
+
 });

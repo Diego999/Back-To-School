@@ -13,6 +13,8 @@
  *= require typography
  *= require forms
  *= require style
+ *= require jquery.ui.datepicker
+ *= require jquery.ui.slider
  */
 
 @import url('//fonts.googleapis.com/css?family=Lato:400,300,700,300italic,900');
