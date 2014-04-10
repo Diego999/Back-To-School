@@ -38,10 +38,13 @@ class Discussion < ActiveRecord::Base
 
     participant_list += users
 
+
+    #TODO: only append the users from the promotions which are accepted followers
     promotions.each do |p|
       participant_list += p.users
     end
 
+    #TODO: realy? append the admins as recipients?
     establishments.each do |e|
       participant_list += e.users
     end
