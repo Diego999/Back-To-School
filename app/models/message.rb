@@ -6,4 +6,6 @@ class Message < ActiveRecord::Base
   belongs_to :user
 
   validates :message, presence: true
+  validates :user, presence: true
+  validates :discussion, presence: true
 end
