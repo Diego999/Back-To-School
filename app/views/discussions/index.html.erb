@@ -4,7 +4,7 @@
 <div id="content" class="col col9 last">
   <div id="discussion-list" class="row clearfix">
     <header><h2>Last discussions</h2></header>
-    <!--<%= render 'discussions/form' %>-->
+    <%= render 'discussions/form' %>
     <% @discussions.sort_by{|d| d.get_last_message_date}.reverse.each do |discussion| %>
         <%= link_to discussion, :class=>"message-link" do %>
             <article class="message-item item">

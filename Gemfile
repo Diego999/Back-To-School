@@ -37,3 +37,7 @@ gem 'capistrano', group: :development
 gem 'capistrano-bundle'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
+
+# Chosen
+gem 'chosen-rails'
+

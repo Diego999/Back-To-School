@@ -482,6 +482,28 @@ section.flashbox p{
 .ui-timepicker-rtl dl dt{ float: right; clear: right; }
 .ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
 
+/* Jquery chosen corrections */
+.chosen-container-multi {
+  background-color: #fff;
+  height: 20px;
+  padding: 15px;
+  width: 710px !important ;
+}
+.chosen-container-multi .chosen-choices { border: 0px solid #fff; background-image: none; }
+.chosen-container-active .chosen-choices { border: 0px solid #fff; box-shadow: none; }
+.chosen-container-multi .chosen-choices li.search-choice {
+  border: 0px solid #fff;
+  border-top: 1px solid #dfdfdf;
+  margin: 5px 0 5px 5px;
+  background-image: none;
+  border-radius: 0px;
+}
+#discussion_users_chosen {
+  display: block;
+  float: left;
+}
+
+
 /*--------------------------------------------------------------
 
 	Media Queries - Desktop from 1020px to 1160px

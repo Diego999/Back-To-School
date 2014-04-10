@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
+//= require chosen-jquery
+//= require scaffold
 //= require_tree .
 
 $( document ).ready(function() {
