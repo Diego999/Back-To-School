@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
+  ensure_authorization_performed
+
   def show
     @user = User.find(params[:id])
+    authorize_action_for(@user)
+
+
     @promotions = @user.promotions
 
     if @promotions.length <= 0

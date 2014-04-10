@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
          :rememberable, :validatable
 
   include Authority::UserAbilities
+  include Authority::Abilities
+  self.authorizer_name = 'UserAuthorizer'
 
   has_and_belongs_to_many :promotions
   belongs_to :establishment
