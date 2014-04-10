@@ -6,4 +6,6 @@ class Event < ActiveRecord::Base
   belongs_to :user
 
   validates :date, :name, :location, presence: true
+  validates :discussion, presence: true
+  validates :user, presence: true
 end
