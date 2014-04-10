@@ -8,4 +8,8 @@ class Establishment < ActiveRecord::Base
   def get_discussion
     Discussion.joins([:establishments]).where('establishments.id = ?', self)
   end
+
+  def get_users
+    User.joins([:promotions]).where('promotions.establishment_id = ?', self)
+  end
 end
