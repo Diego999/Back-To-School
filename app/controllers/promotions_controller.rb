@@ -1,6 +1,11 @@
 class PromotionsController < ApplicationController
+    before_filter :authenticate_user!
+    ensure_authorization_performed
+
   def show
     @promotion = Promotion.find(params[:id])
+    authorize_action_for(@promotion)
+
     @students = @promotion.students
     @current_user = current_user
   end
