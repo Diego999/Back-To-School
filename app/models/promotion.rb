@@ -9,6 +9,8 @@ class Promotion < ActiveRecord::Base
   has_and_belongs_to_many :discussions
 
   validates :name, presence: true
+  validates :establishment, presence: true
+  validates :discussions, :length => { :minimum => 1 }
 
   def get_discussion
     Discussion.joins([:promotions]).where('promotions.id = ?', self)
