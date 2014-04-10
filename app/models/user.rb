@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :firstname, :message => "Firstname required."
   validates_presence_of :lastname, :message => "Lastname required."
-  validates_length_of :email, :within => 6..100, :message => "E-Mail adress length has to be minimum 6 characters.", :allow_blank => false
+  validates_length_of :email, :within => 6..100, :message => "E-Mail address length has to be minimum 6 characters.", :allow_blank => false
+  validates :promotions, :length => { :minimum => 1 }
   validates_with UserValidator
   
   def get_default_promotion
