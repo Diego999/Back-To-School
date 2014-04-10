@@ -1,4 +1,7 @@
 class Establishment < ActiveRecord::Base
+  include Authority::Abilities
+  self.authorizer_name = 'EstablishmentAuthorizer'
+
   has_many :promotions
   has_many :users
   has_and_belongs_to_many :discussions
