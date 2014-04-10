@@ -1,5 +1,6 @@
 class DiscussionsController < ApplicationController
   before_filter :authenticate_user!
+  ensure_authorization_performed
 
   def index
     discussions = current_user.discussions
@@ -15,6 +16,10 @@ class DiscussionsController < ApplicationController
     end
     @discussion = Discussion.new
     @discussions = discussions.uniq
+
+    @discussions.each do |di|
+      authorize_action_for(di)
+    end
   end
 
   def show
@@ -47,6 +52,9 @@ class DiscussionsController < ApplicationController
       else
         d = Discussion.new
         d.users = users
+
+        authorize_action_for(d)
+
         d.save
       end
       redirect_to d
