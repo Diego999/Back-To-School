@@ -37,4 +37,8 @@ class DiscussionAuthorizer < ApplicationAuthorizer
     #check if current user is in participant list.
     valid &= resource.participants.include?(user)
   end
+
+  def updatable_by?(user)
+    resource.participants.include?(user)
+  end
 end
