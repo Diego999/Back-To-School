@@ -21,8 +21,8 @@ class HomeController < ApplicationController
 
     @promotion_followers = @selected_promotion.followers
 
-    #TODO: Ahhhh this is fucking dangerous!!! remove this direct access.
-    # who ensures that at least one discussion is present? greetings from MAE
+    #We use it this way because it would ask too much work. Nothing assure there is minimum 1 discussion.
+    #In our case, this is OK because we cannot create promotion and so forget creating the associated discussion
     @discussion = @selected_promotion.get_discussion[0]
     authorize_action_for(@discussion)
 
