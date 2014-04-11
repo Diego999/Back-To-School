@@ -5,7 +5,7 @@
 
   <% unless mail.empty? %>
       <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'create')) do |f| %>
-        <% [user.id, current_user.id].each do |u| %>
+        <% [user.id].each do |u| %>
             <%= hidden_field_tag 'users[]', u %>
         <% end %>
         <%= f.submit '', :class => mail%>
