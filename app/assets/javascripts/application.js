@@ -32,7 +32,7 @@ $( document ).ready(function() {
      */
     $('.datetimepicker').datetimepicker({
         dateFormat: "yy-mm-dd",
-        timeFormat: "hh:mm:00"
+        timeFormat: "HH:mm:00"
     });
 
 });
