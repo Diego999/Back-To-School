@@ -2,18 +2,8 @@
 <% end %>
 
 <div id="content" class="col col9 last">
-    <div id="discussion-list" class="row clearfix">
-      <header><h2><%=@establishment.name%></h2></header>
-  <% @establishment.promotions.each do |promotion| %>
-    <article class="item list-element">
-        <%= link_to promotion.name, promotion %>
-        <% unless current_user.user_is_in(promotion) %>
-            <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'follow')) do |f| %>
-                <%= hidden_field_tag 'id', promotion.id %>
-                <%= f.submit '', :class => ["list-button", "follow-button"] %>
-            <% end %>
-        <% end %>
-    </article>
-  <% end %>
-    </div>
+  <div id="discussion-list" class="row clearfix">
+    <header><h2><%= @establishment.name %></h2></header>
+    <%= render @establishment.promotions %>
+  </div>
 </div>
