@@ -3,19 +3,7 @@
 
 <div id="content" class="col col9 last">
   <div id="discussion-list" class="row clearfix">
-    <header><h2><%=@promotion.name%></h2></header>
-    <% @students.each do |student| %>
-        <article class="item list-element">
-            <%= link_to student.firstname + " " + student.lastname, student%>
-            <% if current_user.id != student.id %>
-                <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'create')) do |f| %>
-                    <% [student.id].each do |u| %>
-                        <%= hidden_field_tag 'users[]', u %>
-                    <% end %>
-                    <%= f.submit '', :class => ["list-button", "message-button"] %>
-                <% end %>
-            <% end %>
-        </article>
-    <% end %>
+    <header><h2><%= @promotion.name %></h2></header>
+    <%= render @students %>
   </div>
 </div>
