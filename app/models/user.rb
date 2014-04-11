@@ -110,4 +110,22 @@ class User < ActiveRecord::Base
     discussions.include?(discussion) || promotions_discussions.include?(discussion) || accepted_followed_discussions.include?(discussion) || establishment_discussions.include?(discussion)
   end
 
+  def user_is_in(promotion)
+    o = false
+    promotions.each do |p|
+      if p.id == promotion.id
+        o = true
+        break
+      end
+    end
+    unless o
+      promotion.followers.each do |f|
+        if f.user.id == id
+          o = true
+          break
+        end
+      end
+    end
+    o
+  end
 end

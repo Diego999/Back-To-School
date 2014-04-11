@@ -11,15 +11,20 @@ class PromotionsController < ApplicationController
   end
 
   def leave
-    Promotion.find(params[:id]).leave(current_user)
+    promotion = Promotion.find(params[:id])
+    authorize_action_for(promotion)
+    promotion.leave(current_user)
     redirect_to :back
   end
+  authority_actions :leave => 'update'
 
   def follow
     promotion = Promotion.find(params[:id])
-    unless promotion.user_is_in(current_user)
+    authorize_action_for(promotion)
+    unless current_user.user_is_in(promotion)
       Follower.new(:user => current_user, :promotion => promotion, :accepted => false).save
     end
     redirect_to :back
   end
+    authority_actions :follow => 'read'
 end
