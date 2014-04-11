@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140301115342) do
+ActiveRecord::Schema.define(version: 20140411111426) do
 
   create_table "discussions", force: true do |t|
     t.datetime "created_at"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140301115342) do
   end
 
   create_table "events", force: true do |t|
-    t.date     "date"
+    t.datetime "date"
     t.string   "name"
     t.string   "location"
     t.datetime "created_at"
