@@ -13,6 +13,6 @@ class Establishment < ActiveRecord::Base
   end
 
   def get_users
-    User.joins([:promotions]).where('promotions.establishment_id = ?', self)
+    User.joins([:promotions]).where('promotions.establishment_id = ?', self).uniq!
   end
 end
