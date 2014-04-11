@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def accepted_followed_promotions
-    Promotion.joins(:followers).where("followers.user_id = ?", self.id)
+    Promotion.joins(:followers).where("followers.accepted = 1").where("followers.user_id = ?", self.id)
   end
 
   def accepted_followed_discussions

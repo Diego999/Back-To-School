@@ -11,8 +11,8 @@ class HomeController < ApplicationController
     end
 
     @followed_promotions = []
-    current_user.followers.each do |follow|
-      @followed_promotions.append(follow.promotion)
+    current_user.accepted_followed_promotions.each do |promotion|
+      @followed_promotions.append(promotion)
     end
     @selected_promotion = params.has_key?(:id) ? Promotion.find(params[:id]) : current_user.get_default_promotion
     authorize_action_for(@selected_promotion)

@@ -9,10 +9,8 @@ class DiscussionsController < ApplicationController
       discussions += promotion.discussions
       discussions += promotion.establishment.discussions
     end
-    current_user.followers.each do |f|
-      if f.accepted
-        discussions += f.promotion.discussions
-      end
+    current_user.accepted_followed_promotions.each do |promotion|
+        discussions += promotion.discussions
     end
     @discussion = Discussion.new
     @discussions = discussions.uniq
