@@ -128,4 +128,12 @@ class User < ActiveRecord::Base
     end
     o
   end
+
+  def self.search(keyword, establishment)
+    if keyword
+      User.joins([:promotions]).where('promotions.establishment_id = ?', establishment).where('users.firstname LIKE ? OR users.lastname LIKE ?', "%#{keyword}%", "%#{keyword}%")
+    else
+      establishment.get_users
+    end
+  end
 end
