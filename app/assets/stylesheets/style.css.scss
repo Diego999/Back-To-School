@@ -131,7 +131,8 @@ input[type="submit"]{
 }
 
 .message-form #message-submit,
-.event-form #event-submit{
+.event-form #event-submit,
+.discussion-form #discussion-submit{
 	background-color: #ffa084;
 	border: 0px;
 	float:left;
@@ -144,7 +145,8 @@ input[type="submit"]{
 	width: 95px;
 }
 .message-form #message-submit:hover,
-.event-form #event-submit:hover
+.event-form #event-submit:hover,
+.discussion-form #discussion-submit:hover
 { background-color: #f33501; }
 
 /* Footer at bottom */
@@ -485,9 +487,9 @@ section.flashbox p{
 /* Jquery chosen corrections */
 .chosen-container-multi {
   background-color: #fff;
-  height: 20px;
-  padding: 15px;
+  padding: 10px 15px;
   width: 710px !important ;
+  min-height: 30px;
 }
 .chosen-container-multi .chosen-choices { border: 0px solid #fff; background-image: none; }
 .chosen-container-active .chosen-choices { border: 0px solid #fff; box-shadow: none; }
@@ -498,7 +500,7 @@ section.flashbox p{
   background-image: none;
   border-radius: 0px;
 }
-#discussion_users_chosen {
+#discussion_user_ids_chosen {
   display: block;
   float: left;
 }
@@ -532,6 +534,7 @@ section.flashbox p{
 /* ADAPATIONS
 -------------------------------------------------------------- */
 .message-form textarea, .event-form input[type="text"] { width: 575px; }
+.chosen-container-multi { width: 575px !important ; }
 
 }
 
@@ -558,6 +561,7 @@ section.flashbox p{
   div#logo h1, footer.site-footer p { text-align: center; }
   div#user-action { width: 50px; margin-top: -55px; }
   nav#top-navigation { padding-left: 70px; }
+  .chosen-container-multi { width: 520px !important ; }
 }
 
 
@@ -582,11 +586,12 @@ section.flashbox p{
 /* ADAPATIONS
 -------------------------------------------------------------- */
   .message-form textarea, .event-form input[type="text"] { width: 400px; }
-  .message-form #message-submit, .event-form #event-submit { width: 430px; }
+  .message-form #message-submit, .event-form #event-submit, .discussion-form #discussion-submit { width: 430px; }
   nav#top-navigation { height: auto; }
   nav#top-navigation li { display: block; height: 20px; margin-bottom: 20px; }
   #site-page header { margin-top: 20px; }
   nav#top-navigation { padding-left: 40px; }
+  .chosen-container-multi { width: 400px !important ; }
 
 }
 
@@ -609,9 +614,9 @@ section.flashbox p{
 /* ADAPATIONS
 -------------------------------------------------------------- */
   .message-form textarea, .event-form input[type="text"] { width: 260px; }
-  .message-form #message-submit, .event-form #event-submit { width: 290px; }
+  .message-form #message-submit, .event-form #event-submit, .discussion-form #discussion-submit { width: 290px; }
   html { font-size: 95%; }
-
+  .chosen-container-multi { width: 260px !important ; }
 
 }
 
