@@ -60,7 +60,12 @@ class DiscussionsController < ApplicationController
   end
 
   def accept
-    Discussion.accept(current_user, User.find(params[:user]), Promotion.find(params[:promotion]))
+    promotion = Promotion.find(params[:promotion])
+    authorize_action_for(promotion)
+
+    promotion.accept(current_user, User.find(params[:user]))
+
     redirect_to :back
   end
+  authority_actions :accept => 'update'
 end

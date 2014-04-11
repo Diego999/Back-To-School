@@ -62,19 +62,6 @@ class Discussion < ActiveRecord::Base
     messages + events
   end
 
-  def self.accept(current_user, user, promotion)
-    follower = nil
-    promotion.followers.each do |f|
-      if f.user == user
-        follower = f
-      end
-    end
-    if promotion.students.exists?(current_user) and !follower.nil? and !follower.accepted
-      follower.accepted = true
-      follower.save
-    end
-  end
-
   def self.already_exists(_users, _promotions, _establishments)
     discussions = Discussion.all
     users = Discussion.convert_activerecord_to_array(_users)

@@ -10,7 +10,7 @@ class Promotion < ActiveRecord::Base
 
   validates :name, presence: true
   validates :establishment, presence: true
-  validates :discussions, :length => { :minimum => 1 }
+  validates :discussions, :length => {:minimum => 1}
 
   def get_discussion
     Discussion.joins([:promotions]).where('promotions.id = ?', self)
@@ -22,6 +22,19 @@ class Promotion < ActiveRecord::Base
 
   def get_all_users
     (get_accepted_followers + students).uniq
+  end
+
+  def accept(current_user, user)
+    follower = nil
+    followers.each do |f|
+      if f.user == user
+        follower = f
+      end
+    end
+    if students.exists?(current_user) or get_accepted_followers.exists?(current_user) and !follower.nil? and !follower.accepted
+      follower.accepted = true
+      follower.save
+    end
   end
 
   def leave(current_user)
