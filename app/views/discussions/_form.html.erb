@@ -1,8 +1,8 @@
-<%= form_for([@discussion],:html =>{:class => "event-form clearfix" }) do |f| %>
+<%= form_for(@discussion,:html =>{:class => "event-form clearfix" }) do |f| %>
 
     <div class="clearfix">
       <div>
-        <%= f.select :users, User.all.map { |u| [u.firstname + " " + u.lastname]}, { include_blank: true }, { class: 'chosen-select message' , :multiple=>true, :data => { :placeholder => 'Add users here and...' }} %>
+        <%= f.collection_select :user_ids, @users_in_select,:id, :firstname, { include_blank: true }, { class: 'chosen-select message' , :multiple=>true, :data => { :placeholder => 'Add users here and...' }} %>
       </div>
       <div>
         <%= f.submit 'Create it !', :id => "message-submit" %>

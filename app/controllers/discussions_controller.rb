@@ -14,6 +14,7 @@ class DiscussionsController < ApplicationController
     end
     @discussion = Discussion.new
     @discussions = discussions.uniq
+    @users_in_select = current_user.general_establishment.get_users
 
     @discussions.each do |di|
       authorize_action_for(di)
@@ -37,25 +38,29 @@ class DiscussionsController < ApplicationController
   end
 
   def create
-    users = User.find(params[:users])
-    promotions = params.has_key?(:promotions) ? Promotion.find(params[:promotions]) : []
-    establishments = params.has_key?(:establishments) ? Establishment.find(params[:establishments]) : []
-
-    if users.size == 1 && users[0].id == current_user.id
+    user_ids = params[:discussion][:user_ids]
+    if user_ids.size == 0
       redirect_to :back
-    else
-      d = Discussion.already_exists(users, promotions, establishments)
-      if d.size == 1
-        d = d[0]
-      else
-        d = Discussion.new
-        d.users = users
+    elsif user_ids.size == 1 && user_ids.contains?(current_user.id)
+      redirect_to :back
+    end
 
-        authorize_action_for(d)
+    user_ids.delete("")
+    user_ids_int = user_ids.collect{|i| i.to_i}
+    user_ids_int.append(current_user.id).uniq!
 
-        d.save
-      end
+    discussion_new = Discussion.new
+    discussion_new.users = User.find(user_ids_int)
+
+    d = Discussion.already_exists(discussion_new.users,[],[])
+    if d.size == 1
+      d = d[0]
+      authorize_action_for(d)
       redirect_to d
+    else
+      authorize_action_for(discussion_new)
+      discussion_new.save(:validate => false)
+      redirect_to discussion_new
     end
   end
 end
