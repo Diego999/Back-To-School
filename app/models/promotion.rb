@@ -16,6 +16,14 @@ class Promotion < ActiveRecord::Base
     Discussion.joins([:promotions]).where('promotions.id = ?', self)
   end
 
+  def get_accepted_followers
+    User.joins([:followers]).where('followers.promotion_id = ?', self).where('followers.accepted = 1')
+  end
+
+  def get_all_users
+    (get_accepted_followers + students).uniq
+  end
+
   def leave(current_user)
     followers.each do |f|
       if f.user.id == current_user.id

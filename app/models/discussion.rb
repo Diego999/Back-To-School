@@ -38,18 +38,15 @@ class Discussion < ActiveRecord::Base
 
     participant_list += users
 
-
-    #TODO: only append the users from the promotions which are accepted followers
     promotions.each do |p|
-      participant_list += p.users
+      participant_list += p.get_all_users
     end
 
-    #TODO: realy? append the admins as recipients?
     establishments.each do |e|
-      participant_list += e.users
+      participant_list += e.get_users
     end
 
-    participant_list
+    participant_list.uniq
   end
 
   def get_last_message_date
