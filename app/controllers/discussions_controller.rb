@@ -58,14 +58,4 @@ class DiscussionsController < ApplicationController
       redirect_to d
     end
   end
-
-  def accept
-    promotion = Promotion.find(params[:promotion])
-    authorize_action_for(promotion)
-
-    promotion.accept(current_user, User.find(params[:user]))
-
-    redirect_to :back
-  end
-  authority_actions :accept => 'update'
 end

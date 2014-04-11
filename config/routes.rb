@@ -4,7 +4,7 @@ BackToSchool::Application.routes.draw do
   get 'home/:id' => 'home#index', as: 'home'
 
   get "users/show"
-  post "discussions/accept"
+  post "promotions/accept"
   post "promotions/leave"
   post "promotions/follow"
 

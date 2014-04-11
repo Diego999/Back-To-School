@@ -13,7 +13,7 @@
   <% end %>
 
   <% unless follow.empty? %>
-      <%= form_for(:discussion, :url => url_for(:controller => 'discussions', :action => 'accept')) do |f| %>
+      <%= form_for(:promotion, :url => url_for(:controller => 'promotions', :action => 'accept')) do |f| %>
           <%= hidden_field_tag 'user', user.id %>
           <%= hidden_field_tag 'promotion', promotion.id %>
           <%= f.submit '', :class => follow%>
