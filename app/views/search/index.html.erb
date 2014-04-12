@@ -3,15 +3,10 @@
     <header><h2>Search in promotions, users, ...</h2></header>
     <%= render 'search/form' %>
 
+    <% if @search_active %>
+        <%= render(partial: 'search/resultblock', locals: {list: @promotions, entity: 'Promotions'} ) %>
 
-    <article class="list-title item">
-      <p class="message"><strong>Promotions</strong></p>
-    </article>
-    <%= render @promotions %>
-
-    <article class="list-title item">
-      <p class="message"><strong>Users</strong></p>
-    </article>
-    <%= render @users %>
+        <%= render(partial: 'search/resultblock', locals: {list: @users, entity: 'Users'} ) %>
+    <% end %>
   </div>
 </div>

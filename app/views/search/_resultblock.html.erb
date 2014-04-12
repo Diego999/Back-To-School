@@ -1,0 +1,8 @@
+<article class="list-title item">
+  <p class="message"><strong><%= entity %></strong></p>
+</article>
+<% if list.each do |element| %>
+    <%= render(element) %>
+<% end.empty? %>
+    <article class="item list-element" style="font-style: italic;">No <%= entity %> found.</article>
+<% end %>
