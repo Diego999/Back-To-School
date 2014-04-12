@@ -1,3 +1,5 @@
+<% provide(:title, 'Discussion | ' + truncate(@discussion.get_destination_names.join(", "), length: 40, omission: ' ...', separator: ' ')) %>
+
 <% content_for :sidebar do %>
     <%= render :partial => '/layouts/sidebar_discussion', :object => @participants, as: 'participants', locals: {:participants_follower => @participants_follower, :promotion => @promotion, :current_user => @current_user} %>
 <% end %>
