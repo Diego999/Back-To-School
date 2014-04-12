@@ -38,7 +38,7 @@ users = User.all
 
 
 promo_list = [
-    ['DLM2014', establishments[0], [discussions[3]], [users[5], users[6], users[7], users[12]]],
+    ['DLM2014', establishments[0], [discussions[3]], [users[5], users[6], users[7], users[11], users[12]]],
     ['IEE2014', establishments[0], [discussions[4]], [users[12], users[13]]],
     ['PHY2014', establishments[1], [], [users[8], users[9]]],
     ['STI2016', establishments[2], [], [users[10]]]
