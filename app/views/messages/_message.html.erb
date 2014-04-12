@@ -6,5 +6,5 @@
         <%= link_to message.user.firstname + " " + message.user.lastname, message.user %>
     <% end %>
   </strong>| <%= message.created_at.to_time.strftime('%e %B %Y at %H:%M')%></p>
-  <p class="message"> <%= message.message %> </p>
+  <p class="message"> <%= h(message.message).gsub(/\n/, '<br/>').html_safe %> </p>
 </article>
