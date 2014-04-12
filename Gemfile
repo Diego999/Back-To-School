@@ -31,6 +31,7 @@ end
 
 gem 'devise'
 gem 'authority'
+gem 'jquery-cookie-rails'
 
 # Use Capistrano for deployment
 gem 'capistrano', group: :development
