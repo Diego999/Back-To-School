@@ -48,7 +48,7 @@ class Promotion < ActiveRecord::Base
 
   def self.search(keyword, establishment)
     if keyword
-      Promotion.joins([:establishements]).where(:establishment == establishment).where('name LIKE ?', "%#{keyword}%")
+      Promotion.joins([:establishment]).where('promotions.establishment_id = ?',establishment).where('promotions.name LIKE ?', "%#{keyword}%")
     else
       establishment.promotions
     end
