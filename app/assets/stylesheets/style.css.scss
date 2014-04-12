@@ -115,7 +115,8 @@ input[type="submit"]{
 }
 
 .message-form textarea,
-.event-form input[type=text] {
+.event-form input[type=text],
+.search-form input[type=text]{
 	border: 0px;
 	color: #676767;
 	display: block;
@@ -132,7 +133,8 @@ input[type="submit"]{
 
 .message-form #message-submit,
 .event-form #event-submit,
-.discussion-form #discussion-submit{
+.discussion-form #discussion-submit,
+.search-form #search-submit{
 	background-color: #ffa084;
 	border: 0px;
 	float:left;
@@ -146,7 +148,8 @@ input[type="submit"]{
 }
 .message-form #message-submit:hover,
 .event-form #event-submit:hover,
-.discussion-form #discussion-submit:hover
+.discussion-form #discussion-submit:hover,
+.search-form #search-submit:hover
 { background-color: #f33501; }
 
 /* Footer at bottom */
@@ -533,7 +536,7 @@ section.flashbox p{
 
 /* ADAPATIONS
 -------------------------------------------------------------- */
-.message-form textarea, .event-form input[type="text"] { width: 575px; }
+.message-form textarea, .event-form input[type="text"], .search-form input[type="text"]{ width: 575px; }
 .chosen-container-multi { width: 575px !important ; }
 
 }
@@ -556,7 +559,7 @@ section.flashbox p{
 
 /* ADAPATIONS
 -------------------------------------------------------------- */
-  .message-form textarea, .event-form input[type="text"] { width: 520px; }
+  .message-form textarea, .event-form input[type="text"], .search-form input[type="text"] { width: 520px; }
   div#logo h1 a { font-size: 32px; }
   div#logo h1, footer.site-footer p { text-align: center; }
   div#user-action { width: 50px; margin-top: -55px; }
@@ -585,8 +588,9 @@ section.flashbox p{
 
 /* ADAPATIONS
 -------------------------------------------------------------- */
-  .message-form textarea, .event-form input[type="text"] { width: 400px; }
-  .message-form #message-submit, .event-form #event-submit, .discussion-form #discussion-submit { width: 430px; }
+  .message-form textarea, .event-form input[type="text"], .search-form input[type="text"] { width: 400px; }
+  .message-form #message-submit, .event-form #event-submit,
+  .discussion-form #discussion-submit, .search-form #search-submit { width: 430px; }
   nav#top-navigation { height: auto; }
   nav#top-navigation li { display: block; height: 20px; margin-bottom: 20px; }
   #site-page header { margin-top: 20px; }
@@ -613,8 +617,9 @@ section.flashbox p{
 
 /* ADAPATIONS
 -------------------------------------------------------------- */
-  .message-form textarea, .event-form input[type="text"] { width: 260px; }
-  .message-form #message-submit, .event-form #event-submit, .discussion-form #discussion-submit { width: 290px; }
+  .message-form textarea, .event-form input[type="text"], .search-form input[type="text"] { width: 260px; }
+  .message-form #message-submit, .event-form #event-submit,
+  .discussion-form #discussion-submit, .search-form #search-submit { width: 290px; }
   html { font-size: 95%; }
   .chosen-container-multi { width: 260px !important ; }
 

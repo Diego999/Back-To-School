@@ -1,10 +1,10 @@
-<%= form_tag("/search", method: "get", class: "message-form clearfix") do %>
+<%= form_tag("/search", method: "get", class: "search-form clearfix") do %>
     <div class="clearfix">
       <div>
         <%= text_field_tag(:keyword, (params[:keyword] or nil), rows: 1, cols: 40, class: "message", placeholder: "Insert your Keywords here...") %>
       </div>
       <div>
-        <%= submit_tag("Search", :id => "search-submit") %>
+        <%= submit_tag("Search !", :id => "search-submit") %>
       </div>
     </div>
 <% end %>
